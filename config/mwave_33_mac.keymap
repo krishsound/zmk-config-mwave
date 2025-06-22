@@ -10,6 +10,19 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/mouse.h>
 
+/* Layer definitions */
+#define/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/mouse.h>
+
 /* Additional includes for mouse input processing */
 #include <dt-bindings/zmk/input_transform.h>/*
  * Copyright (c) 2020 The ZMK Contributors
