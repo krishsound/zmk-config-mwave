@@ -10,31 +10,10 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/mouse.h>
 
-/* Layer definitions */
-#define/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/mouse.h>
-
-/* Additional includes for mouse input processing */
-#include <dt-bindings/zmk/input_transform.h>/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/mouse.h>
+/* Add input transform and pointing includes for mouse speed control */
+#include <dt-bindings/zmk/input_transform.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 
 /* Layer definitions */
 #define LAYER_HRM_macOS 0
@@ -46,31 +25,27 @@
 #define LAYER_Typing 6
 #define LAYER_HRM_WinLinx 7
 #define LAYER_Cursor 8
-#define LAYER_Symbol 9
-#define LAYER_Lower 10
-#define LAYER_Autoshift 11
+#define LAYER_Lower 9
+#define LAYER_Autoshift 10
 
 /* To deal with the situation where there is no Lower layer */
 #ifndef LAYER_Lower
 #define LAYER_Lower 0
 #endif
 
-/* Input Processors for Mouse Speed */
-#include <input/processors.dtsi>
-
-/* Mouse Input Listeners for speed scaling */
+/* Input Listeners for Mouse Speed Control */
 &mmv_input_listener {
-    // LAYER_MouseSlow
+    // LAYER_MouseSlow - 1/9 speed
     LAYER_MouseSlow {
         layers = <3>;
         input-processors = <&zip_xy_scaler 1 9>;
     };
-    // LAYER_MouseFast
+    // LAYER_MouseFast - 3x speed
     LAYER_MouseFast {
         layers = <4>;
         input-processors = <&zip_xy_scaler 3 1>;
     };
-    // LAYER_MouseWarp
+    // LAYER_MouseWarp - 12x speed
     LAYER_MouseWarp {
         layers = <5>;
         input-processors = <&zip_xy_scaler 12 1>;
@@ -78,17 +53,17 @@
 };
 
 &msc_input_listener {
-    // LAYER_MouseSlow
+    // LAYER_MouseSlow - 1/9 scroll speed
     LAYER_MouseSlow {
         layers = <3>;
         input-processors = <&zip_scroll_scaler 1 9>;
     };
-    // LAYER_MouseFast
+    // LAYER_MouseFast - 3x scroll speed
     LAYER_MouseFast {
         layers = <4>;
         input-processors = <&zip_scroll_scaler 3 1>;
     };
-    // LAYER_MouseWarp
+    // LAYER_MouseWarp - 12x scroll speed
     LAYER_MouseWarp {
         layers = <5>;
         input-processors = <&zip_scroll_scaler 12 1>;
@@ -141,6 +116,30 @@
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
+        ctrl_num_3: ctrl_num_3 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_3";
+            #binding-cells = <0>;
+            bindings = <&kp N3>, <&to 3>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        ctrl_num_4: ctrl_num_4 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_4";
+            #binding-cells = <0>;
+            bindings = <&kp N4>, <&to 4>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        ctrl_num_5: ctrl_num_5 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_5";
+            #binding-cells = <0>;
+            bindings = <&kp N5>, <&to 5>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
         ctrl_num_6: ctrl_num_6 {
             compatible = "zmk,behavior-mod-morph";
             label = "CTRL_NUM_6";
@@ -154,6 +153,22 @@
             label = "CTRL_NUM_7";
             #binding-cells = <0>;
             bindings = <&kp N7>, <&to 7>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        ctrl_num_8: ctrl_num_8 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_8";
+            #binding-cells = <0>;
+            bindings = <&kp N8>, <&to 8>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        ctrl_num_9: ctrl_num_9 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_9";
+            #binding-cells = <0>;
+            bindings = <&kp N9>, <&to 9>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
@@ -421,20 +436,6 @@
                        <&macro_pause_for_release>,
                        <&macro_release &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
         };
-
-        /* Advanced tab switching with chord */
-        mod_tab_chord: mod_tab_chord {
-            label = "MOD_TAB_CHORD";
-            compatible = "zmk,behavior-macro-two-param";
-            #binding-cells = <2>;
-            tap-ms = <0>;
-            wait-ms = <0>;
-            bindings = <&macro_press &macro_param_2to1 &mo MACRO_PLACEHOLDER>,
-                       <&macro_press &macro_param_1to1 &mod_tab MACRO_PLACEHOLDER>,
-                       <&macro_pause_for_release>,
-                       <&macro_release &macro_param_1to1 &mod_tab MACRO_PLACEHOLDER>,
-                       <&macro_release &macro_param_2to1 &mo MACRO_PLACEHOLDER>;
-        };
     };
 
     combos {
@@ -444,7 +445,7 @@
             timeout-ms = <50>;
             key-positions = <41 46>; /* Both shift keys */
             bindings = <&kp CAPS>;
-            layers = <0 7 11>;
+            layers = <0 7 10>;
         };
     };
 
@@ -454,7 +455,7 @@
         layer_HRM_macOS {
             bindings = <
 &kp F1     &kp F2    &kp F3    &kp F4     &kp F5    &kp F6     &kp F7    &kp F8     &kp F9     &kp F10    &kp F11    &kp F12
-&kp EQUAL  &ctrl_num_1    &ctrl_num_2    &kp N3     &kp N4    &kp N5     &ctrl_num_6    &ctrl_num_7     &kp N8     &kp N9     &ctrl_num_0     &kp MINUS
+&kp EQUAL  &ctrl_num_1    &ctrl_num_2    &ctrl_num_3     &ctrl_num_4    &ctrl_num_5     &ctrl_num_6    &ctrl_num_7     &ctrl_num_8     &ctrl_num_9     &ctrl_num_0     &kp MINUS
 &kp TAB    &kp Q     &kp W     &kp E      &kp R     &kp T      &kp Y     &kp U      &kp I      &kp O      &kp P      &kp BSLH
 &caps_esc  &HRM_left_pinky LSHFT A  &HRM_left_ring LCTRL S  &HRM_left_middle LALT D  &HRM_left_index LGUI F  &kp G      &kp H     &HRM_right_index LGUI J  &HRM_right_middle RALT K  &HRM_right_ring RCTRL L  &HRM_right_pinky RSHFT SEMI  &kp SQT
 &kp GRAVE  &kp Z     &kp X     &kp C      &kp V     &kp B      &kp N     &kp M      &kp COMMA  &kp DOT    &kp FSLH   &lower
@@ -488,10 +489,10 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_DOWN  &mkp LCLK  &mmv MOVE_UP  &mkp RCLK  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans  &mkp RCLK  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &mkp MCLK  &trans
             >;
         };
 
@@ -499,10 +500,10 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_DOWN  &mkp LCLK  &mmv MOVE_UP  &mkp RCLK  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans  &mkp RCLK  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &mkp MCLK  &trans
             >;
         };
 
@@ -510,10 +511,10 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_DOWN  &mkp LCLK  &mmv MOVE_UP  &mkp RCLK  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans  &mkp RCLK  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &mkp MCLK  &trans
             >;
         };
 
@@ -531,11 +532,11 @@
         layer_HRM_WinLinx {
             bindings = <
 &kp F1     &kp F2    &kp F3    &kp F4     &kp F5    &kp F6     &kp F7    &kp F8     &kp F9     &kp F10    &kp F11    &kp F12
-&kp EQUAL  &kp N1    &kp N2    &kp N3     &kp N4    &kp N5     &kp N6    &kp N7     &kp N8     &kp N9     &kp N0     &kp MINUS
+&kp EQUAL  &ctrl_num_1    &ctrl_num_2    &ctrl_num_3     &ctrl_num_4    &ctrl_num_5     &ctrl_num_6    &ctrl_num_7     &ctrl_num_8     &ctrl_num_9     &ctrl_num_0     &kp MINUS
 &kp TAB    &kp Q     &kp W     &kp E      &kp R     &kp T      &kp Y     &kp U      &kp I      &kp O      &kp P      &kp BSLH
 &kp ESC    &HRM_left_pinky LGUI A  &HRM_left_ring LALT S  &HRM_left_middle LCTRL D  &HRM_left_index LSHFT F  &kp G      &kp H     &HRM_right_index RSHFT J  &HRM_right_middle RCTRL K  &HRM_right_ring LALT L  &HRM_right_pinky LGUI SEMI  &kp SQT
 &kp GRAVE  &kp Z     &kp X     &kp C      &kp V     &kp B      &kp N     &kp M      &kp COMMA  &kp DOT    &kp FSLH   &lower
-&kp LCTRL  &kp DEL   &kp LGUI  &kp LALT   &thumb_layer LAYER_Cursor BSPC     &space_layer LAYER_Symbol SPACE  &kp RET   &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT
+&kp LCTRL  &kp DEL   &kp LGUI  &kp LALT   &thumb_layer LAYER_Cursor BSPC     &space_layer LAYER_Mouse SPACE  &kp RET   &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT
             >;
         };
 
@@ -546,26 +547,15 @@
 &trans     &kp RET  &kp SPACE        &kp TAB          &kp BSPC   &kp LC(X)  &kp LC(X)        &kp LS(TAB)      &kp LC(Z)  &kp LC(Y)  &kp TAB    &trans
 &sk LSHFT  &kp LGUI &kp LALT         &kp LCTRL        &kp LSHFT  &kp LC(C)  &kp LC(C)        &kp LEFT         &kp UP     &kp DOWN   &kp RIGHT  &sk RSHFT
 &kp LC(L)  &kp LC(A) &cur_select_line &cur_select_word &kp LC(F)  &kp LC(V)  &kp LC(V)        &kp HOME         &kp PG_UP  &kp PG_DN  &kp END    &kp LC(L)
-&kp LC(K)  &kp LC(Z) &kp LC(Y)       &mod_tab LALT    &mod_tab LGUI        &cur_select_none &kp LC(F)        &mod_tab LCTRL &kp LC(G) &kp LC(H)  &kp LC(K)
-            >;
-        };
-
-        layer_Symbol {
-            bindings = <
-&trans     &trans    &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
-&kp GRAVE  &kp RBKT  &kp LPAR   &kp RPAR   &kp SEMI   &kp DOT    &trans     &trans     &trans     &trans     &trans     &trans
-&kp LBKT   &kp EXCL  &kp LBRC   &kp RBRC   &kp COMMA  &kp QMARK  &kp GRAVE  &sk RSHFT  &sk RCTRL  &sk RALT   &sk RGUI   &trans
-&kp HASH   &kp CARET &kp EQUAL  &kp UNDER  &kp DLLR   &kp STAR   &kp DQT    &kp BSPC   &kp TAB    &kp SPACE  &kp RET    &trans
-&kp TILDE  &kp LT    &kp PIPE   &kp MINUS  &kp GT     &kp FSLH   &kp SQT    &kp DEL    &kp LS(TAB) &kp INS   &kp ESC    &trans
-&trans     &kp AMPS  &kp SQT    &kp DQT    &kp PLUS              &kp PRCNT  &kp COLON  &kp AT     &trans     &trans     &trans
+&kp LC(K)  &kp LC(Z) &kp LC(Y)       &kp LC(LS(G))    &kp LC(G)             &cur_select_none &kp LC(F)        &kp LC(LS(G)) &kp LC(G) &kp LC(H)  &kp LC(K)
             >;
         };
 
         layer_Lower {
             bindings = <
 &kp C_BRI_DN &kp C_BRI_UP &kp C_PREV &kp C_NEXT &kp C_PP   &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans     &kp PAUSE_BREAK &trans      &trans
-&trans       &to 1        &to 2      &trans     &trans     &kp HOME   &to 6        &to 7        &to 8      &to 9           &to 0       &kp PRINTSCREEN
-&trans       &trans       &trans     &kp UP     &trans     &kp END    &kp RPAR     &kp KP_N7    &kp KP_N8  &kp KP_N9       &kp KP_MINUS &to 11
+&trans       &to 1        &to 2      &to 3      &to 4      &to 5      &to 6        &to 7        &to 8      &to 9           &to 0       &kp PRINTSCREEN
+&trans       &trans       &trans     &kp UP     &trans     &kp END    &kp RPAR     &kp KP_N7    &kp KP_N8  &kp KP_N9       &kp KP_MINUS &to 10
 &trans       &trans       &kp LEFT   &kp DOWN   &kp RIGHT  &kp PG_UP  &kp PERCENT  &kp KP_N4    &kp KP_N5  &kp KP_N6       &kp KP_PLUS  &trans
 &trans       &kp K_APP    &trans     &kp F11    &kp F12    &kp PG_DN  &kp COMMA    &kp KP_N1    &kp KP_N2  &kp KP_N3       &kp KP_ENTER &trans
 &trans       &kp CAPS     &kp INS    &kp F11    &kp F12               &kp KP_N0    &kp KP_N0    &kp KP_DOT &kp KP_ENTER    &trans       &trans
