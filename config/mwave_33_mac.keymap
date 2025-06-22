@@ -397,12 +397,12 @@
 
         layer_Mouse {
             bindings = <
-&none   &none      &none   &none      &none   &none        &trans     &mo 3      &mo 4      &mo 5    &none      &none
-&none   &none      &none   &none      &none   &none        &trans     &mo 3      &mo 4      &mo 5    &none      &none
-&none   &none  &kp PG_DN  &trans  &kp PG_UP   &none        &msc SCRL_DOWN  &mkp LCLK  &mmv MOVE_UP  &mkp RCLK  &sk RGUI  &none
-&none   &trans     &mo 3   &mo 4      &mo 5   &trans       &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &mkp MB4
-&none   &trans    &trans  &trans     &trans   &trans       &trans     &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans  &mkp RCLK  &mkp MB5
-&none   &none      &none   &none   &mkp LCLK               &mkp RCLK  &trans     &trans     &trans   &mkp MCLK  &kp K_APP
+&trans  &trans     &trans  &trans     &trans  &trans       &trans     &mo 3      &mo 4      &mo 5    &trans     &trans
+&trans  &trans     &trans  &trans     &trans  &trans       &trans     &mo 3      &mo 4      &mo 5    &trans     &trans
+&trans  &trans  &kp PG_DN  &trans  &kp PG_UP  &trans       &msc SCRL_DOWN  &mkp LCLK  &mmv MOVE_UP  &mkp RCLK  &sk RGUI  &trans
+&trans  &trans     &mo 3   &mo 4      &mo 5   &trans       &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &mkp MB4
+&trans  &trans    &trans  &trans     &trans   &trans       &trans     &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans  &mkp RCLK  &mkp MB5
+&trans  &trans     &trans  &trans   &mkp LCLK               &mkp RCLK  &trans     &trans     &trans   &mkp MCLK  &kp K_APP
             >;
         };
 
@@ -463,10 +463,10 @@
 
         layer_Cursor {
             bindings = <
-&none      &none   &none            &none            &none      &none      &none            &none            &none      &none      &none      &none
-&none      &kp ESC &kp INS          &kp LS(TAB)      &kp DEL    &none      &none            &none            &none      &none      &none      &none
-&none      &kp RET &kp SPACE        &kp TAB          &kp BSPC   &kp LC(X)  &kp LC(X)        &kp LS(TAB)      &kp LC(Z)  &kp LC(Y)  &kp TAB    &none
-&sk LSHFT  &kp LGUI &kp LALT        &kp LCTRL        &kp LSHFT  &kp LC(C)  &kp LC(C)        &kp LEFT         &kp UP     &kp DOWN   &kp RIGHT  &sk RSHFT
+&trans     &trans   &trans           &trans           &trans     &trans     &trans           &trans           &trans     &trans     &trans     &trans
+&trans     &kp ESC  &kp INS          &kp LS(TAB)      &kp DEL    &trans     &trans           &trans           &trans     &trans     &trans     &trans
+&trans     &kp RET  &kp SPACE        &kp TAB          &kp BSPC   &kp LC(X)  &kp LC(X)        &kp LS(TAB)      &kp LC(Z)  &kp LC(Y)  &kp TAB    &trans
+&sk LSHFT  &kp LGUI &kp LALT         &kp LCTRL        &kp LSHFT  &kp LC(C)  &kp LC(C)        &kp LEFT         &kp UP     &kp DOWN   &kp RIGHT  &sk RSHFT
 &kp LC(L)  &kp LC(A) &cur_select_line &cur_select_word &kp LC(F)  &kp LC(V)  &kp LC(V)        &kp HOME         &kp PG_UP  &kp PG_DN  &kp END    &kp LC(L)
 &kp LC(K)  &kp LC(Z) &kp LC(Y)       &kp LC(LS(G))    &kp LC(G)             &cur_select_none &kp LC(F)        &kp LC(LS(G)) &kp LC(G) &kp LC(H)  &kp LC(K)
             >;
@@ -474,22 +474,22 @@
 
         layer_Symbol {
             bindings = <
-&none      &none     &none      &none      &none      &none      &none      &none      &none      &none      &none      &none
-&kp GRAVE  &kp RBKT  &kp LPAR   &kp RPAR   &kp SEMI   &kp DOT    &none      &none      &none      &none      &none      &none
-&kp LBKT   &kp EXCL  &kp LBRC   &kp RBRC   &kp COMMA  &kp QMARK  &kp GRAVE  &sk RSHFT  &sk RCTRL  &sk RALT   &sk RGUI   &none
-&kp HASH   &kp CARET &kp EQUAL  &kp UNDER  &kp DLLR   &kp STAR   &kp DQT    &kp BSPC   &kp TAB    &kp SPACE  &kp RET    &none
-&kp TILDE  &kp LT    &kp PIPE   &kp MINUS  &kp GT     &kp FSLH   &kp SQT    &kp DEL    &kp LS(TAB) &kp INS   &kp ESC    &none
-&none      &kp AMPS  &kp SQT    &kp DQT    &kp PLUS              &kp PRCNT  &kp COLON  &kp AT     &none      &none      &none
+&trans     &trans    &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
+&kp GRAVE  &kp RBKT  &kp LPAR   &kp RPAR   &kp SEMI   &kp DOT    &trans     &trans     &trans     &trans     &trans     &trans
+&kp LBKT   &kp EXCL  &kp LBRC   &kp RBRC   &kp COMMA  &kp QMARK  &kp GRAVE  &sk RSHFT  &sk RCTRL  &sk RALT   &sk RGUI   &trans
+&kp HASH   &kp CARET &kp EQUAL  &kp UNDER  &kp DLLR   &kp STAR   &kp DQT    &kp BSPC   &kp TAB    &kp SPACE  &kp RET    &trans
+&kp TILDE  &kp LT    &kp PIPE   &kp MINUS  &kp GT     &kp FSLH   &kp SQT    &kp DEL    &kp LS(TAB) &kp INS   &kp ESC    &trans
+&trans     &kp AMPS  &kp SQT    &kp DQT    &kp PLUS              &kp PRCNT  &kp COLON  &kp AT     &trans     &trans     &trans
             >;
         };
 
         layer_Lower {
             bindings = <
-&kp C_BRI_DN &kp C_BRI_UP &kp C_PREV &kp C_NEXT &kp C_PP   &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &none     &kp PAUSE_BREAK &none      &none
-&trans       &to 1        &to 2      &none      &none      &kp HOME   &to 6        &to 7        &to 8     &to 9           &to 0      &kp PRINTSCREEN
-&trans       &none        &none      &kp UP     &none      &kp END    &kp RPAR     &kp KP_N7    &kp KP_N8 &kp KP_N9       &kp KP_MINUS    &to 11
-&trans       &none        &kp LEFT   &kp DOWN   &kp RIGHT  &kp PG_UP  &kp PERCENT  &kp KP_N4    &kp KP_N5 &kp KP_N6       &kp KP_PLUS     &none
-&trans       &kp K_APP    &none      &kp F11    &kp F12    &kp PG_DN  &kp COMMA    &kp KP_N1    &kp KP_N2 &kp KP_N3       &kp KP_ENTER    &trans
+&kp C_BRI_DN &kp C_BRI_UP &kp C_PREV &kp C_NEXT &kp C_PP   &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &trans     &kp PAUSE_BREAK &trans      &trans
+&trans       &to 1        &to 2      &trans     &trans     &kp HOME   &to 6        &to 7        &to 8     &to 9           &to 0      &kp PRINTSCREEN
+&trans       &trans       &trans     &kp UP     &trans     &kp END    &kp RPAR     &kp KP_N7    &kp KP_N8 &kp KP_N9       &kp KP_MINUS    &to 11
+&trans       &trans       &kp LEFT   &kp DOWN   &kp RIGHT  &kp PG_UP  &kp PERCENT  &kp KP_N4    &kp KP_N5 &kp KP_N6       &kp KP_PLUS     &trans
+&trans       &kp K_APP    &trans     &kp F11    &kp F12    &kp PG_DN  &kp COMMA    &kp KP_N1    &kp KP_N2 &kp KP_N3       &kp KP_ENTER    &trans
 &trans       &kp CAPS     &kp INS    &kp F11    &kp F12               &kp KP_N0    &kp KP_N0    &kp KP_DOT &kp KP_ENTER   &trans          &trans
             >;
         };
