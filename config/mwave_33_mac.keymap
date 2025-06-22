@@ -10,11 +10,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/mouse.h>
 
-/* Add input transform and pointing includes for mouse speed control */
-#include <dt-bindings/zmk/input_transform.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <input/processors.dtsi>
-
 /* Layer definitions */
 #define LAYER_HRM_macOS 0
 #define LAYER_Cursor_macOS 1
@@ -32,43 +27,6 @@
 #ifndef LAYER_Lower
 #define LAYER_Lower 0
 #endif
-
-/* Input Listeners for Mouse Speed Control */
-&mmv_input_listener {
-    // LAYER_MouseSlow - 1/9 speed
-    LAYER_MouseSlow {
-        layers = <3>;
-        input-processors = <&zip_xy_scaler 1 9>;
-    };
-    // LAYER_MouseFast - 3x speed
-    LAYER_MouseFast {
-        layers = <4>;
-        input-processors = <&zip_xy_scaler 3 1>;
-    };
-    // LAYER_MouseWarp - 12x speed
-    LAYER_MouseWarp {
-        layers = <5>;
-        input-processors = <&zip_xy_scaler 12 1>;
-    };
-};
-
-&msc_input_listener {
-    // LAYER_MouseSlow - 1/9 scroll speed
-    LAYER_MouseSlow {
-        layers = <3>;
-        input-processors = <&zip_scroll_scaler 1 9>;
-    };
-    // LAYER_MouseFast - 3x scroll speed
-    LAYER_MouseFast {
-        layers = <4>;
-        input-processors = <&zip_scroll_scaler 3 1>;
-    };
-    // LAYER_MouseWarp - 12x scroll speed
-    LAYER_MouseWarp {
-        layers = <5>;
-        input-processors = <&zip_scroll_scaler 12 1>;
-    };
-};
 
 / {
 
@@ -485,6 +443,7 @@
             >;
         };
 
+        /* Mouse speed layers - without hardware scaling, these provide different mouse functions */
         layer_MouseSlow {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
