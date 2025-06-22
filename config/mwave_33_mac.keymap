@@ -422,20 +422,6 @@
                        <&macro_release &macro_param_1to1 &mod_tab MACRO_PLACEHOLDER>,
                        <&macro_release &macro_param_2to1 &mo MACRO_PLACEHOLDER>;
         };
-
-        /* Advanced tab switching with chord */
-        mod_tab_chord: mod_tab_chord {
-            label = "MOD_TAB_CHORD";
-            compatible = "zmk,behavior-macro-two-param";
-            #binding-cells = <2>;
-            tap-ms = <0>;
-            wait-ms = <0>;
-            bindings = <&macro_press &macro_param_2to1 &mo MACRO_PLACEHOLDER>,
-                       <&macro_press &macro_param_1to1 &mod_tab MACRO_PLACEHOLDER>,
-                       <&macro_pause_for_release>,
-                       <&macro_release &macro_param_1to1 &mod_tab MACRO_PLACEHOLDER>,
-                       <&macro_release &macro_param_2to1 &mo MACRO_PLACEHOLDER>;
-        };
     };
 
     combos {
