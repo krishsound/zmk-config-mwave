@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2020 The ZMK Contributors
- * Copyright (c) 2025 Innaworks Development Limited, trading as MoErgo
  *
  * SPDX-License-Identifier: MIT
  */
@@ -34,7 +33,6 @@
     #include "mwave_prim.dtsi"
     #include "studio-macros.dtsi"
 
-    /* Behaviors */
     behaviors {
         /* For the "layer" key, tap dance for momentary/toggle */
         lower: lower {
@@ -45,7 +43,7 @@
             bindings = <&mo LAYER_Lower>, <&to LAYER_Lower>;
         };
 
-        /* Caps Lock behavior - tap for ESC, hold for original key */
+        /* Caps Lock behavior - tap for ESC, Cmd+tap for window switch */
         caps_esc: caps_esc {
             compatible = "zmk,behavior-mod-morph";
             label = "CAPS_ESC";
@@ -54,9 +52,51 @@
             mods = <(MOD_LGUI)>;
         };
 
+        /* Ctrl+Number layer switching */
+        ctrl_num_0: ctrl_num_0 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_0";
+            #binding-cells = <0>;
+            bindings = <&kp N0>, <&to 0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        ctrl_num_1: ctrl_num_1 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_1";
+            #binding-cells = <0>;
+            bindings = <&kp N1>, <&to 1>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        ctrl_num_2: ctrl_num_2 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_2";
+            #binding-cells = <0>;
+            bindings = <&kp N2>, <&to 2>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        ctrl_num_6: ctrl_num_6 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_6";
+            #binding-cells = <0>;
+            bindings = <&kp N6>, <&to 6>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        ctrl_num_7: ctrl_num_7 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CTRL_NUM_7";
+            #binding-cells = <0>;
+            bindings = <&kp N7>, <&to 7>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
         /* Home Row Mods - all 140ms timing */
         HRM_left_pinky: HRM_left_pinky {
             compatible = "zmk,behavior-hold-tap";
+            label = "HRM_LEFT_PINKY";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             quick-tap-ms = <300>;
@@ -69,6 +109,7 @@
 
         HRM_left_ring: HRM_left_ring {
             compatible = "zmk,behavior-hold-tap";
+            label = "HRM_LEFT_RING";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             quick-tap-ms = <300>;
@@ -81,6 +122,7 @@
 
         HRM_left_middle: HRM_left_middle {
             compatible = "zmk,behavior-hold-tap";
+            label = "HRM_LEFT_MIDDLE";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             quick-tap-ms = <300>;
@@ -93,6 +135,7 @@
 
         HRM_left_index: HRM_left_index {
             compatible = "zmk,behavior-hold-tap";
+            label = "HRM_LEFT_INDEX";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             quick-tap-ms = <300>;
@@ -105,6 +148,7 @@
 
         HRM_right_index: HRM_right_index {
             compatible = "zmk,behavior-hold-tap";
+            label = "HRM_RIGHT_INDEX";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             quick-tap-ms = <300>;
@@ -117,6 +161,7 @@
 
         HRM_right_middle: HRM_right_middle {
             compatible = "zmk,behavior-hold-tap";
+            label = "HRM_RIGHT_MIDDLE";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             quick-tap-ms = <300>;
@@ -129,6 +174,7 @@
 
         HRM_right_ring: HRM_right_ring {
             compatible = "zmk,behavior-hold-tap";
+            label = "HRM_RIGHT_RING";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             quick-tap-ms = <300>;
@@ -141,6 +187,7 @@
 
         HRM_right_pinky: HRM_right_pinky {
             compatible = "zmk,behavior-hold-tap";
+            label = "HRM_RIGHT_PINKY";
             #binding-cells = <2>;
             tapping-term-ms = <140>;
             quick-tap-ms = <300>;
@@ -154,6 +201,7 @@
         /* Thumb layer access behaviors */
         thumb_layer: thumb_layer {
             compatible = "zmk,behavior-hold-tap";
+            label = "THUMB_LAYER";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <300>;
@@ -163,6 +211,7 @@
 
         space_layer: space_layer {
             compatible = "zmk,behavior-hold-tap";
+            label = "SPACE_LAYER";
             #binding-cells = <2>;
             tapping-term-ms = <170>;
             quick-tap-ms = <150>;
@@ -174,6 +223,7 @@
         /* CapsWord behavior */
         caps_word_kp: caps_word_kp {
             compatible = "zmk,behavior-hold-tap";
+            label = "CAPS_WORD_KP";
             #binding-cells = <2>;
             tapping-term-ms = <400>;
             bindings = <&kp>, <&caps_word>;
@@ -182,6 +232,7 @@
         /* AutoShift Hold-Tap behavior */
         AS_HT: AS_HT {
             compatible = "zmk,behavior-hold-tap";
+            label = "AUTOSHIFT_HT";
             #binding-cells = <2>;
             tapping-term-ms = <190>;
             flavor = "tap-preferred";
@@ -189,7 +240,6 @@
         };
     };
 
-    /* Macros */
     macros {
         /* AutoShift macros */
         AS_Shifted: AS_Shifted {
@@ -307,24 +357,8 @@
                        <&macro_pause_for_release>,
                        <&macro_release &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
         };
-
-        /* Sample text macros */
-        mstr1: mstr1 {
-            label = "STRING1";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp H &kp E &kp L &kp L &kp O &kp SPACE &kp W &kp O &kp R &kp L &kp D &kp EXCL>;
-        };
-
-        mstr2: mstr2 {
-            label = "STRING2";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp G &kp R &kp A &kp M &kp M &kp A &kp R &kp SPACE &kp C &kp H &kp E &kp C &kp K &kp COLON &kp SPACE &kp LC(V) &kp RET>;
-        };
     };
 
-    /* Combos */
     combos {
         compatible = "zmk,combos";
         
@@ -336,14 +370,13 @@
         };
     };
 
-    /* Keymap */
     keymap {
         compatible = "zmk,keymap";
 
         layer_HRM_macOS {
             bindings = <
 &kp F1     &kp F2    &kp F3    &kp F4     &kp F5    &kp F6     &kp F7    &kp F8     &kp F9     &kp F10    &kp F11    &kp F12
-&kp EQUAL  &kp N1    &kp N2    &kp N3     &kp N4    &kp N5     &kp N6    &kp N7     &kp N8     &kp N9     &kp N0     &kp MINUS
+&kp EQUAL  &ctrl_num_1    &ctrl_num_2    &kp N3     &kp N4    &kp N5     &ctrl_num_6    &ctrl_num_7     &kp N8     &kp N9     &ctrl_num_0     &kp MINUS
 &kp TAB    &kp Q     &kp W     &kp E      &kp R     &kp T      &kp Y     &kp U      &kp I      &kp O      &kp P      &kp BSLH
 &caps_esc  &HRM_left_pinky LSHFT A  &HRM_left_ring LCTRL S  &HRM_left_middle LALT D  &HRM_left_index LGUI F  &kp G      &kp H     &HRM_right_index LGUI J  &HRM_right_middle RALT K  &HRM_right_ring RCTRL L  &HRM_right_pinky RSHFT SEMI  &kp SQT
 &kp GRAVE  &kp Z     &kp X     &kp C      &kp V     &kp B      &kp N     &kp M      &kp COMMA  &kp DOT    &kp FSLH   &lower
@@ -453,8 +486,8 @@
         layer_Lower {
             bindings = <
 &kp C_BRI_DN &kp C_BRI_UP &kp C_PREV &kp C_NEXT &kp C_PP   &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &none     &kp PAUSE_BREAK &none      &none
-&trans       &none        &none      &none      &none      &kp HOME   &kp LPAR     &kp KP_NUM   &kp EQUAL &kp KP_SLASH    &kp KP_MULTIPLY &kp PRINTSCREEN
-&trans       &none        &none      &kp UP     &none      &kp END    &kp RPAR     &kp KP_N7    &kp KP_N8 &kp KP_N9       &kp KP_MINUS    &kp SCROLLLOCK
+&trans       &to 1        &to 2      &none      &none      &kp HOME   &to 6        &to 7        &to 8     &to 9           &to 0      &kp PRINTSCREEN
+&trans       &none        &none      &kp UP     &none      &kp END    &kp RPAR     &kp KP_N7    &kp KP_N8 &kp KP_N9       &kp KP_MINUS    &to 11
 &trans       &none        &kp LEFT   &kp DOWN   &kp RIGHT  &kp PG_UP  &kp PERCENT  &kp KP_N4    &kp KP_N5 &kp KP_N6       &kp KP_PLUS     &none
 &trans       &kp K_APP    &none      &kp F11    &kp F12    &kp PG_DN  &kp COMMA    &kp KP_N1    &kp KP_N2 &kp KP_N3       &kp KP_ENTER    &trans
 &trans       &kp CAPS     &kp INS    &kp F11    &kp F12               &kp KP_N0    &kp KP_N0    &kp KP_DOT &kp KP_ENTER   &trans          &trans
