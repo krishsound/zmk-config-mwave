@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -9,7 +9,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/mouse.h>
-#include <dt-bindings/zmk/backlight.h>
 
 /* Layer definitions */
 #define LAYER_HRM_macOS 0
@@ -30,12 +29,7 @@
 #define LAYER_Lower 0
 #endif
 
-/* Include the hardware-specific definitions */
-#include "mwave_prim.dtsi"
-
 / {
-    /* Include studio macros */
-    #include "studio-macros.dtsi"
 
     behaviors {
         /* For the "layer" key, tap dance for momentary/toggle */
