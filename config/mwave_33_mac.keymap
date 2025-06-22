@@ -443,7 +443,7 @@
             >;
         };
 
-        /* Mouse speed layers - without hardware scaling, these provide different mouse functions */
+        /* Mouse layers for different contexts - currently identical but ready for future customization */
         layer_MouseSlow {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
