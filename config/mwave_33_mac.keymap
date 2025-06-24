@@ -34,11 +34,10 @@
     behaviors {
         /* For the "layer" key, tap for sticky layer, hold for momentary */
         lower: lower {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LAYER_TAP_HOLD";
+            compatible = "zmk,behavior-tap-dance";
+            label = "LAYER_TAP_DANCE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            flavor = "balanced";
             bindings = <&mo LAYER_Lower>, <&sl LAYER_Lower>;
         };
 
