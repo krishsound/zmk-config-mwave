@@ -14,10 +14,10 @@
 #include <behaviors/advertising_mode.dtsi>
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
+#include "version.dtsi"
 
 / {
     #include "mwave_prim.dtsi"
-
     behaviors {
         /* For the "layer" key using right control */
         lower: lower {
@@ -169,12 +169,67 @@
     };
 
     macros {
-        /* Reuse the macro_ver from stock */
+        /* Bluetooth/USB switching macros from mwave_prim.dtsi */
+        usb_conn: usb_conn {
+            compatible = "zmk,behavior-macro";
+            label = "USB_CONN";
+            wait-ms = <1>;
+            tap-ms = <1>;
+            #binding-cells = <0>;
+            bindings = <&out OUT_USB &adv_mode ADV_OFF>;
+        };
+        
+        ble_zero: ble_zero {
+            compatible = "zmk,behavior-macro";
+            label = "BLE_ZERO";
+            wait-ms = <1>;
+            tap-ms = <1>;
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 0 &adv_mode ADV_ON>;
+        };
+        
+        ble_one: ble_one {
+            compatible = "zmk,behavior-macro";
+            label = "BLE_ONE";
+            wait-ms = <1>;
+            tap-ms = <1>;
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 1 &adv_mode ADV_ON>;
+        };
+
+        /* Studio unlock macro */
+        studio_unlock: studio_unlock {
+            compatible = "zmk,behavior-macro";
+            label = "STUDIO_UNLOCK";
+            #binding-cells = <0>;
+            bindings = <&kp Z &kp M &kp K>;
+        };
+
+        /* Version macro */
         macro_ver: macro_ver {
             compatible = "zmk,behavior-macro";
             label = "VERSION_MACRO";
             #binding-cells = <0>;
             bindings = <&kp V &kp E &kp R &kp S &kp I &kp O &kp N>;
+        };
+    };
+
+    /* Endpoint sideband behaviors for automatic USB/BT switching */
+    endpoint_sideband_behaviors {
+        auto-enable;
+        compatible = "zmk,kscan-sideband-behaviors";
+        kscan = <&kscan_sp3t_toggle>;
+        first_toggle_sideband: first_toggle_sideband {
+            column = <0>;
+            bindings = <&usb_conn>;
+        };
+        second_toggle_sideband: second_toggle_sideband {
+            column = <1>;
+            bindings = <&ble_zero>;
+        };
+        third_toggle_sideband: third_toggle_sideband {
+            column = <2>;
+            bindings = <&ble_one>;
         };
     };
 
@@ -184,46 +239,46 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp ESC    &kp F1        &kp F2        &kp F3        &kp F4      &kp F5         &kp F6         &kp F7        &kp F8     &kp F9                    &kp F10           &kp F11        &kp F12     &kp HOME        &kp END          &kp PSCRN   &to 1
+&kp ESC    &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP       &kp C_NEXT     &bl BL_CYCLE  &kp F11    &kp LS(LC(LG(NUMBER_4)))  &kp LC(UP_ARROW)  &kp LG(SPACE)  &bt BT_CLR  &kp SCROLLLOCK  &kp PAUSE_BREAK  &kp K_POWER  &to 1
 &kp GRAVE  &kp N1        &kp N2        &kp N3        &kp N4      &kp N5         &kp N6         &kp N7        &kp N8     &kp N9                    &kp N0            &kp MINUS      &kp EQUAL   &kp BSPC        &kp DEL
 &kp TAB    &kp Q         &kp W         &kp E         &kp R       &kp T          &kp Y          &kp U         &kp I      &kp O                     &kp P             &kp LBKT       &kp RBKT    &kp BSLH        &none
-&caps_esc  &HRM_left_pinky LSHFT A  &HRM_left_ring LCTRL S  &HRM_left_middle LALT D  &HRM_left_index LGUI F  &kp G          &kp H          &HRM_right_index LGUI J  &HRM_right_middle RALT K  &HRM_right_ring RCTRL L  &HRM_right_pinky RSHFT SEMI  &kp SQT        &kp RET     &kp PG_UP
+&kp CLCK   &kp A         &kp S         &kp D         &kp F       &kp G          &kp H          &kp J         &kp K      &kp L                     &kp SEMI          &kp SQT        &kp RET     &kp PG_UP
 &kp LSHFT  &kp Z         &kp X         &kp C         &kp V       &kp B          &kp N          &kp M         &kp COMMA  &kp DOT                   &kp FSLH          &kp RSHFT      &kp UP      &kp PG_DN
-&kp LCTRL  &kp LGUI      &kp LALT      &kp SPACE     &thumb_layer 2 SPACE     &kp SPACE      &kp RALT      &lower     &kp LEFT   &kp DOWN                  &kp RIGHT
+&kp LCTRL  &kp LEFT_ALT  &kp LEFT_GUI  &kp SPACE     &kp SPACE   &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RCTRL     &kp LEFT   &kp DOWN                  &kp RIGHT
             >;
         };
 
         raise {
             display-name = "Fn";
             bindings = <
-&kp ESCAPE      &kp F1  &kp F2  &kp F3     &kp F4      &kp F5  &kp F6      &kp F7     &kp F8       &kp F9         &kp F10          &kp F11          &kp F12    &kp HOME       &kp END     &bt BT_CLR  &to 0
-&trans          &to 1   &to 2   &to 3      &to 4       &to 5   &to 6       &to 7      &to 8        &to 9          &to 0            &trans           &trans     &kp PRINTSCREEN  &trans
-&trans          &trans  &trans  &kp UP     &trans      &trans  &trans      &kp KP_N7  &kp KP_N8    &kp KP_N9      &kp KP_MINUS     &trans           &trans     &trans          &trans
-&studio_unlock  &trans  &kp LEFT &kp DOWN  &kp RIGHT   &trans  &trans      &kp KP_N4  &kp KP_N5    &kp KP_N6      &kp KP_PLUS      &trans           &trans     &trans
-&trans          &trans  &trans  &trans     &macro_ver  &trans  &trans      &kp KP_N1  &kp KP_N2    &kp KP_N3      &kp KP_ENTER     &trans           &trans     &trans
-&trans          &kp CAPS &kp INS &kp F11   &kp KP_N0   &kp KP_N0 &kp KP_DOT &trans   &trans       &trans         &trans
+&kp ESCAPE      &kp F1  &kp F2  &kp F3     &kp F4      &kp F5  &kp F6      &kp F7     &kp F8       &kp F9         &kp F10          &kp F11          &kp F12    &kp HOME       &kp END     &none  &to 0
+&none           &none   &none   &none      &none       &none   &none       &none      &kp KP_NLCK  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS        &kp EQUAL  &kp BACKSPACE
+&kp TAB         &none   &none   &none      &none       &none   &none       &kp KP_N7  &kp KP_N8    &kp KP_N9      &kp KP_MINUS     &none            &none      &none          &kp DELETE
+&studio_unlock  &none   &none   &none      &none       &none   &none       &kp KP_N4  &kp KP_N5    &kp KP_N6      &kp KP_PLUS      &none            &kp ENTER  &kp PAGE_UP
+&kp LEFT_SHIFT  &none   &none   &none      &macro_ver  &none   &none       &kp KP_N1  &kp KP_N2    &kp KP_N3      &kp KP_ENTER     &kp RIGHT_SHIFT  &kp UP     &kp PAGE_DOWN
+&none           &none   &none   &kp SPACE  &kp KP_N0   &none   &kp KP_DOT  &none      &kp LEFT     &kp DOWN       &kp RIGHT
             >;
         };
 
         cursor_layer {
             display-name = "Cursor";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp PG_UP  &kp UP     &kp PG_DN &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp LEFT   &kp DOWN   &kp RIGHT &kp END    &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp PG_UP  &kp UP     &kp PG_DN &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp LEFT   &kp DOWN   &kp RIGHT &kp END    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans
             >;
         };
 
         typing_layer {
             display-name = "Typing";
             bindings = <
-&trans     &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans  &trans
-&kp EQUAL  &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp N6   &kp N7   &kp N8     &kp N9     &kp N0     &kp MINUS  &kp EQUAL  &kp BSPC   &trans
-&trans     &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I      &kp O      &kp P      &kp LBKT   &kp RBKT   &kp BSLH   &trans
-&kp CAPS   &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K      &kp L      &kp SEMI   &kp SQT    &kp RET    &trans
+&trans     &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans     &trans     &trans     &trans     &trans     &trans     &trans  &trans
+&kp EQUAL  &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp N6   &kp N7   &kp N8   &kp N9     &kp N0     &kp MINUS  &kp EQUAL  &kp BSPC   &trans
+&trans     &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O      &kp P      &kp LBKT   &kp RBKT   &kp BSLH   &trans
+&kp CAPS   &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L      &kp SEMI   &kp SQT    &kp RET    &trans
 &typing_shift LGUI BSPC  &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA  &kp DOT    &kp FSLH   &trans     &trans     &trans
 &kp LCTRL  &kp LALT &kp LALT &kp SPACE &kp SPACE &kp SPACE &kp RALT &kp RCTRL &trans   &trans     &trans
             >;
