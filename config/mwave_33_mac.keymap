@@ -413,6 +413,43 @@
             wait-ms = <1>;
             bindings = <&kp DOWN>, <&kp UP>, <&kp RIGHT>, <&kp LEFT>;
         };
+
+        /* Cursor macros - macOS versions */
+        cur_SELECT_LINE_macos_v1_TKZ: cur_SELECT_LINE_macos_v1_TKZ {
+            label = "SELECT_LINE_MACOS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LG(LEFT)>, <&kp LG(LS(RIGHT))>;
+        };
+
+        cur_SELECT_WORD_macos_v1_TKZ: cur_SELECT_WORD_macos_v1_TKZ {
+            label = "SELECT_WORD_MACOS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LA(LEFT)>, <&kp LA(LS(RIGHT))>;
+        };
+
+        cur_EXTEND_LINE_macos_v1_TKZ: cur_EXTEND_LINE_macos_v1_TKZ {
+            label = "EXTEND_LINE_MACOS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LG(LS(RIGHT))>;
+        };
+
+        cur_EXTEND_WORD_macos_v1_TKZ: cur_EXTEND_WORD_macos_v1_TKZ {
+            label = "EXTEND_WORD_MACOS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LA(LS(RIGHT))>;
+        };
     };
 
     /* Combos - adapted from silver copy */
@@ -519,7 +556,7 @@
 &trans  &kp N1  &kp N2  &kp N3  &trans  &trans  &trans  &trans     &trans     &trans     &kp N0    &trans     &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp PG_UP  &kp UP     &kp PG_DN &trans     &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp LEFT   &kp DOWN   &kp RIGHT &kp END    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans
+&trans  &trans  &cur_SELECT_LINE_macos_v1_TKZ  &cur_SELECT_WORD_macos_v1_TKZ  &cur_EXTEND_LINE_macos_v1_TKZ  &cur_EXTEND_WORD_macos_v1_TKZ  &trans     &trans     &trans     &trans    &trans     &trans  &trans
 &trans  &trans  &trans  &cur_SELECT_NONE_v1_TKZ  &trans  &trans  &trans  &trans     &trans     &trans     &trans
             >;
         };
