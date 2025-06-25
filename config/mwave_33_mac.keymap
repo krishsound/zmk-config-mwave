@@ -635,10 +635,10 @@
             bindings = <
 &trans  &trans     &trans  &trans     &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans  &trans  &none
 &trans  &kp N1     &kp N2  &kp N3     &trans  &trans  &trans     &mo 5      &mo 6      &mo 7     &kp N0     &trans  &trans  &trans  &trans
-&trans  &trans  &kp PG_DN  &trans  &kp PG_UP  &trans  &msc SCRL_DOWN  &mkp LCLK  &mmv MOVE_UP  &mkp RCLK  &sk RGUI  &trans  &trans  &trans  &trans
-&trans  &trans     &mo 5   &mo 6      &mo 7   &trans  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &mkp MB4  &trans  &trans
-&trans  &trans    &trans  &trans     &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans  &mkp RCLK  &mkp MB5  &trans  &trans
-&trans  &trans     &trans  &mkp LCLK     &mkp RCLK  &trans  &trans  &trans     &trans     &trans    &mkp MCLK
+&trans  &trans  &kp PG_DN  &trans  &kp PG_UP  &trans  &none  &none  &none  &none  &sk RGUI  &trans  &trans  &trans  &trans
+&trans  &trans     &mo 5   &mo 6      &mo 7   &trans  &none  &none  &none  &none  &none  &none  &trans  &trans
+&trans  &trans    &trans  &trans     &trans  &trans  &trans  &none  &none  &trans  &none  &none  &trans  &trans
+&trans  &trans     &trans  &none     &none  &trans  &trans  &trans     &trans     &trans    &none
             >;
         };
 
