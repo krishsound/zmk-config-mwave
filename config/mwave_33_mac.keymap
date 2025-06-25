@@ -423,25 +423,6 @@
         };
     };
 
-    /* Endpoint sideband behaviors for automatic USB/BT switching */
-    endpoint_sideband_behaviors {
-        auto-enable;
-        compatible = "zmk,kscan-sideband-behaviors";
-        kscan = <&kscan_sp3t_toggle>;
-        first_toggle_sideband: first_toggle_sideband {
-            column = <0>;
-            bindings = <&usb_conn>;
-        };
-        second_toggle_sideband: second_toggle_sideband {
-            column = <1>;
-            bindings = <&ble_zero>;
-        };
-        third_toggle_sideband: third_toggle_sideband {
-            column = <2>;
-            bindings = <&ble_one>;
-        };
-    };
-
     /* Combos - adapted from silver copy */
     combos {
         compatible = "zmk,combos";
