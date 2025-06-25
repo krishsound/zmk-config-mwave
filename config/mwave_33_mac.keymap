@@ -360,14 +360,6 @@
             bindings = <&out OUT_BLE &bt BT_SEL 1 &adv_mode ADV_ON>;
         };
 
-        /* Studio unlock macro */
-        studio_unlock: studio_unlock {
-            compatible = "zmk,behavior-macro";
-            label = "STUDIO_UNLOCK";
-            #binding-cells = <0>;
-            bindings = <&kp Z &kp M &kp K>;
-        };
-
         /* Version macro */
         macro_ver: macro_ver {
             compatible = "zmk,behavior-macro";
