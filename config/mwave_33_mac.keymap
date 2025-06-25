@@ -16,8 +16,108 @@
 #include "studio-macros.dtsi"
 #include "version.dtsi"
 
+/* Gold Copy Key Position Definitions - Based on your keyboard layout */
+/* Top Row (Function/Media Keys) - 17 positions */
+#define POS_F1 0
+#define POS_MUTE 1
+#define POS_VOL_DN 2
+#define POS_VOL_UP 3
+#define POS_PREV 4
+#define POS_PLAY 5
+#define POS_NEXT 6
+#define POS_BL 7
+#define POS_F11 8
+#define POS_SCRN 9
+#define POS_UP_ARR 10
+#define POS_SPACE_KEY 11
+#define POS_BT_CLR 12
+#define POS_SCROLL 13
+#define POS_PAUSE 14
+#define POS_POWER 15
+#define POS_LAYER_SWITCH 16
+
+/* Number Row - 15 positions */
+#define POS_GRAVE 17
+#define POS_1 18
+#define POS_2 19
+#define POS_3 20
+#define POS_4 21
+#define POS_5 22
+#define POS_6 23
+#define POS_7 24
+#define POS_8 25
+#define POS_9 26
+#define POS_0 27
+#define POS_MINUS 28
+#define POS_EQUAL 29
+#define POS_BSPC 30
+#define POS_DEL 31
+
+/* Top Alpha Row - 15 positions */
+#define POS_TAB 32
+#define POS_Q 33
+#define POS_W 34
+#define POS_E 35
+#define POS_R 36
+#define POS_T 37
+#define POS_Y 38
+#define POS_U 39
+#define POS_I 40
+#define POS_O 41
+#define POS_P 42
+#define POS_LBKT 43
+#define POS_RBKT 44
+#define POS_BSLH 45
+#define POS_NONE1 46
+
+/* Home Row - 14 positions */
+#define POS_CAPS 47
+#define POS_A 48
+#define POS_S 49
+#define POS_D 50
+#define POS_F 51
+#define POS_G 52
+#define POS_H 53
+#define POS_J 54
+#define POS_K 55
+#define POS_L 56
+#define POS_SEMI 57
+#define POS_SQT 58
+#define POS_RET 59
+#define POS_PGUP 60
+
+/* Bottom Alpha Row - 14 positions */
+#define POS_LSHFT 61
+#define POS_Z 62
+#define POS_X 63
+#define POS_C 64
+#define POS_V 65
+#define POS_B 66
+#define POS_N 67
+#define POS_M 68
+#define POS_COMMA 69
+#define POS_DOT 70
+#define POS_FSLH 71
+#define POS_RSHFT 72
+#define POS_UP 73
+#define POS_PGDN 74
+
+/* Bottom Row - 11 positions */
+#define POS_LCTRL 75
+#define POS_LEFT_ALT 76
+#define POS_LEFT_GUI 77
+#define POS_SPACE1 78
+#define POS_SPACE2 79
+#define POS_RIGHT_GUI 80
+#define POS_RIGHT_ALT 81
+#define POS_RCTRL 82
+#define POS_LEFT 83
+#define POS_DOWN 84
+#define POS_RIGHT 85
+
 / {
     #include "mwave_prim.dtsi"
+    
     behaviors {
         /* For the "layer" key using right control */
         lower: lower {
@@ -37,32 +137,75 @@
             mods = <(MOD_LGUI)>;
         };
 
-        /* Home Row Mods */
-        HRM_left_pinky: HRM_left_pinky {
+        /* Fn + Number layer access behaviors */
+        fn_num_0: fn_num_0 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "FN_NUM_0";
+            #binding-cells = <0>;
+            bindings = <&kp N0>, <&to 0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        fn_num_1: fn_num_1 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "FN_NUM_1";
+            #binding-cells = <0>;
+            bindings = <&kp N1>, <&to 1>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        fn_num_2: fn_num_2 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "FN_NUM_2";
+            #binding-cells = <0>;
+            bindings = <&kp N2>, <&to 2>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        fn_num_3: fn_num_3 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "FN_NUM_3";
+            #binding-cells = <0>;
+            bindings = <&kp N3>, <&to 3>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        /* Home Row Mods - Silver copy style with optimized per-finger timing */
+        HRM_left_pinky_v1_TKZ: HRM_left_pinky_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_LEFT_PINKY";
             #binding-cells = <2>;
-            tapping-term-ms = <260>;
+            tapping-term-ms = <170>;
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_6 POS_7 POS_8 POS_9 POS_0 POS_MINUS POS_EQUAL POS_BSPC POS_DEL 
+                                         POS_Y POS_U POS_I POS_O POS_P POS_LBKT POS_RBKT POS_BSLH 
+                                         POS_H POS_J POS_K POS_L POS_SEMI POS_SQT POS_RET POS_PGUP
+                                         POS_N POS_M POS_COMMA POS_DOT POS_FSLH POS_RSHFT POS_UP POS_PGDN
+                                         POS_SPACE1 POS_SPACE2 POS_RIGHT_GUI POS_RIGHT_ALT POS_RCTRL POS_LEFT POS_DOWN POS_RIGHT>;
             hold-trigger-on-release;
         };
 
-        HRM_left_ring: HRM_left_ring {
+        HRM_left_ring_v1_TKZ: HRM_left_ring_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_LEFT_RING";
             #binding-cells = <2>;
-            tapping-term-ms = <240>;
+            tapping-term-ms = <210>;
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_6 POS_7 POS_8 POS_9 POS_0 POS_MINUS POS_EQUAL POS_BSPC POS_DEL 
+                                         POS_Y POS_U POS_I POS_O POS_P POS_LBKT POS_RBKT POS_BSLH 
+                                         POS_H POS_J POS_K POS_L POS_SEMI POS_SQT POS_RET POS_PGUP
+                                         POS_N POS_M POS_COMMA POS_DOT POS_FSLH POS_RSHFT POS_UP POS_PGDN
+                                         POS_SPACE1 POS_SPACE2 POS_RIGHT_GUI POS_RIGHT_ALT POS_RCTRL POS_LEFT POS_DOWN POS_RIGHT>;
             hold-trigger-on-release;
         };
 
-        HRM_left_middle: HRM_left_middle {
+        HRM_left_middy_v1_TKZ: HRM_left_middy_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_LEFT_MIDDLE";
             #binding-cells = <2>;
@@ -71,34 +214,49 @@
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_6 POS_7 POS_8 POS_9 POS_0 POS_MINUS POS_EQUAL POS_BSPC POS_DEL 
+                                         POS_Y POS_U POS_I POS_O POS_P POS_LBKT POS_RBKT POS_BSLH 
+                                         POS_H POS_J POS_K POS_L POS_SEMI POS_SQT POS_RET POS_PGUP
+                                         POS_N POS_M POS_COMMA POS_DOT POS_FSLH POS_RSHFT POS_UP POS_PGDN
+                                         POS_SPACE1 POS_SPACE2 POS_RIGHT_GUI POS_RIGHT_ALT POS_RCTRL POS_LEFT POS_DOWN POS_RIGHT>;
             hold-trigger-on-release;
         };
 
-        HRM_left_index: HRM_left_index {
+        HRM_left_index_v1_TKZ: HRM_left_index_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_LEFT_INDEX";
             #binding-cells = <2>;
-            tapping-term-ms = <190>;
+            tapping-term-ms = <150>;
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_6 POS_7 POS_8 POS_9 POS_0 POS_MINUS POS_EQUAL POS_BSPC POS_DEL 
+                                         POS_Y POS_U POS_I POS_O POS_P POS_LBKT POS_RBKT POS_BSLH 
+                                         POS_H POS_J POS_K POS_L POS_SEMI POS_SQT POS_RET POS_PGUP
+                                         POS_N POS_M POS_COMMA POS_DOT POS_FSLH POS_RSHFT POS_UP POS_PGDN
+                                         POS_SPACE1 POS_SPACE2 POS_RIGHT_GUI POS_RIGHT_ALT POS_RCTRL POS_LEFT POS_DOWN POS_RIGHT>;
             hold-trigger-on-release;
         };
 
-        HRM_right_index: HRM_right_index {
+        HRM_right_index_v1_TKZ: HRM_right_index_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_RIGHT_INDEX";
             #binding-cells = <2>;
-            tapping-term-ms = <190>;
+            tapping-term-ms = <150>;
             quick-tap-ms = <300>;
             require-prior-idle-ms = <100>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_GRAVE POS_1 POS_2 POS_3 POS_4 POS_5 
+                                         POS_TAB POS_Q POS_W POS_E POS_R POS_T 
+                                         POS_CAPS POS_A POS_S POS_D POS_F POS_G
+                                         POS_LSHFT POS_Z POS_X POS_C POS_V POS_B
+                                         POS_LCTRL POS_LEFT_ALT POS_LEFT_GUI POS_SPACE1 POS_SPACE2>;
             hold-trigger-on-release;
         };
 
-        HRM_right_middle: HRM_right_middle {
+        HRM_right_middy_v1_TKZ: HRM_right_middy_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_RIGHT_MIDDLE";
             #binding-cells = <2>;
@@ -107,64 +265,70 @@
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_GRAVE POS_1 POS_2 POS_3 POS_4 POS_5 
+                                         POS_TAB POS_Q POS_W POS_E POS_R POS_T 
+                                         POS_CAPS POS_A POS_S POS_D POS_F POS_G
+                                         POS_LSHFT POS_Z POS_X POS_C POS_V POS_B
+                                         POS_LCTRL POS_LEFT_ALT POS_LEFT_GUI POS_SPACE1 POS_SPACE2>;
             hold-trigger-on-release;
         };
 
-        HRM_right_ring: HRM_right_ring {
+        HRM_right_ring_v1_TKZ: HRM_right_ring_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_RIGHT_RING";
             #binding-cells = <2>;
-            tapping-term-ms = <240>;
+            tapping-term-ms = <210>;
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_GRAVE POS_1 POS_2 POS_3 POS_4 POS_5 
+                                         POS_TAB POS_Q POS_W POS_E POS_R POS_T 
+                                         POS_CAPS POS_A POS_S POS_D POS_F POS_G
+                                         POS_LSHFT POS_Z POS_X POS_C POS_V POS_B
+                                         POS_LCTRL POS_LEFT_ALT POS_LEFT_GUI POS_SPACE1 POS_SPACE2>;
             hold-trigger-on-release;
         };
 
-        HRM_right_pinky: HRM_right_pinky {
+        HRM_right_pinky_v1_TKZ: HRM_right_pinky_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_RIGHT_PINKY";
             #binding-cells = <2>;
-            tapping-term-ms = <140>;
+            tapping-term-ms = <170>;
             quick-tap-ms = <300>;
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <POS_GRAVE POS_1 POS_2 POS_3 POS_4 POS_5 
+                                         POS_TAB POS_Q POS_W POS_E POS_R POS_T 
+                                         POS_CAPS POS_A POS_S POS_D POS_F POS_G
+                                         POS_LSHFT POS_Z POS_X POS_C POS_V POS_B
+                                         POS_LCTRL POS_LEFT_ALT POS_LEFT_GUI POS_SPACE1 POS_SPACE2>;
             hold-trigger-on-release;
         };
 
-        /* Thumb layer access behaviors */
-        thumb_layer: thumb_layer {
+        /* Left space: hold for Cmd, tap for backspace */
+        left_space: left_space {
             compatible = "zmk,behavior-hold-tap";
-            label = "THUMB_LAYER";
+            label = "LEFT_SPACE";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <300>;
+            tapping-term-ms = <170>;
+            quick-tap-ms = <150>;
+            require-prior-idle-ms = <70>;
             flavor = "balanced";
-            bindings = <&mo>, <&kp>;
+            bindings = <&kp>, <&kp>;
         };
 
-        space_layer: space_layer {
+        /* Right space: hold for Mouse layer */
+        right_space: right_space {
             compatible = "zmk,behavior-hold-tap";
-            label = "SPACE_LAYER";
+            label = "RIGHT_SPACE";
             #binding-cells = <2>;
             tapping-term-ms = <170>;
             quick-tap-ms = <150>;
             require-prior-idle-ms = <70>;
             flavor = "balanced";
             bindings = <&mo>, <&kp>;
-        };
-
-        /* Typing layer shift - tap for backspace, hold for cmd */
-        typing_shift: typing_shift {
-            compatible = "zmk,behavior-hold-tap";
-            label = "TYPING_SHIFT";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <150>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
         };
     };
 
@@ -212,6 +376,102 @@
             #binding-cells = <0>;
             bindings = <&kp V &kp E &kp R &kp S &kp I &kp O &kp N>;
         };
+
+        /* Cursor macros - Windows/Linux versions */
+        cur_SELECT_LINE_v1_TKZ: cur_SELECT_LINE_v1_TKZ {
+            label = "SELECT_LINE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp HOME>, <&kp LS(END)>;
+        };
+
+        cur_SELECT_WORD_v1_TKZ: cur_SELECT_WORD_v1_TKZ {
+            label = "SELECT_WORD";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LC(LEFT)>, <&kp LC(LS(RIGHT))>;
+        };
+
+        cur_EXTEND_LINE_v1_TKZ: cur_EXTEND_LINE_v1_TKZ {
+            label = "EXTEND_LINE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LS(END)>;
+        };
+
+        cur_EXTEND_WORD_v1_TKZ: cur_EXTEND_WORD_v1_TKZ {
+            label = "EXTEND_WORD";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LC(LS(RIGHT))>;
+        };
+
+        cur_SELECT_NONE_v1_TKZ: cur_SELECT_NONE_v1_TKZ {
+            label = "SELECT_NONE";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp DOWN>, <&kp UP>, <&kp RIGHT>, <&kp LEFT>;
+        };
+
+        /* Cursor macros - macOS versions */
+        cur_SELECT_LINE_macos_v1_TKZ: cur_SELECT_LINE_macos_v1_TKZ {
+            label = "SELECT_LINE_MACOS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LG(LEFT)>, <&kp LG(LS(RIGHT))>;
+        };
+
+        cur_SELECT_WORD_macos_v1_TKZ: cur_SELECT_WORD_macos_v1_TKZ {
+            label = "SELECT_WORD_MACOS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LA(LEFT)>, <&kp LA(LS(RIGHT))>;
+        };
+
+        cur_EXTEND_LINE_macos_v1_TKZ: cur_EXTEND_LINE_macos_v1_TKZ {
+            label = "EXTEND_LINE_MACOS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LG(LS(RIGHT))>;
+        };
+
+        cur_EXTEND_WORD_macos_v1_TKZ: cur_EXTEND_WORD_macos_v1_TKZ {
+            label = "EXTEND_WORD_MACOS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <1>;
+            wait-ms = <1>;
+            bindings = <&kp LA(LS(RIGHT))>;
+        };
+
+        /* Tab switching macro */
+        mod_tab_v2_TKZ: mod_tab_v2_TKZ {
+            label = "MOD_TAB";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            tap-ms = <0>;
+            wait-ms = <0>;
+            bindings = <&macro_press>, <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>,
+                       <&macro_tap>, <&kp TAB>,
+                       <&macro_pause_for_release>,
+                       <&macro_release>, <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>;
+        };
     };
 
     /* Endpoint sideband behaviors for automatic USB/BT switching */
@@ -233,26 +493,112 @@
         };
     };
 
+    /* Combos - adapted from silver copy */
+    combos {
+        compatible = "zmk,combos";
+        
+        /* Layer Navigation Combos - Fn + Number */
+        combo_layer_0 {
+            timeout-ms = <50>;
+            key-positions = <POS_LAYER_SWITCH POS_0>;
+            bindings = <&to 0>;
+            layers = <0 1 2 3>;
+        };
+
+        combo_layer_1 {
+            timeout-ms = <50>;
+            key-positions = <POS_LAYER_SWITCH POS_1>;
+            bindings = <&to 1>;
+            layers = <0 1 2 3>;
+        };
+
+        combo_layer_2 {
+            timeout-ms = <50>;
+            key-positions = <POS_LAYER_SWITCH POS_2>;
+            bindings = <&to 2>;
+            layers = <0 1 2 3>;
+        };
+
+        combo_layer_3 {
+            timeout-ms = <50>;
+            key-positions = <POS_LAYER_SWITCH POS_3>;
+            bindings = <&to 3>;
+            layers = <0 1 2 3 4 5 6 7>;
+        };
+
+        combo_layer_4 {
+            timeout-ms = <50>;
+            key-positions = <POS_LAYER_SWITCH POS_4>;
+            bindings = <&to 4>;
+            layers = <0 1 2 3 4 5 6 7>;
+        };
+
+        combo_layer_5 {
+            timeout-ms = <50>;
+            key-positions = <POS_LAYER_SWITCH POS_5>;
+            bindings = <&to 5>;
+            layers = <0 1 2 3 4 5 6 7>;
+        };
+
+        combo_layer_6 {
+            timeout-ms = <50>;
+            key-positions = <POS_LAYER_SWITCH POS_6>;
+            bindings = <&to 6>;
+            layers = <0 1 2 3 4 5 6 7>;
+        };
+
+        combo_layer_7 {
+            timeout-ms = <50>;
+            key-positions = <POS_LAYER_SWITCH POS_7>;
+            bindings = <&to 7>;
+            layers = <0 1 2 3 4 5 6 7>;
+        };
+        
+        /* Caps lock when pressing both shift keys */
+        combo_caps {
+            timeout-ms = <50>;
+            key-positions = <POS_LSHFT POS_RSHFT>;
+            bindings = <&kp CAPS>;
+            layers = <0 2>;
+        };
+
+        /* Meh modifier (Option + Ctrl + Shift) */
+        combo_meh {
+            timeout-ms = <50>;
+            key-positions = <POS_LEFT_ALT POS_LCTRL>;
+            bindings = <&sk LA(LC(LSHFT))>;
+            layers = <0 2>;
+        };
+
+        /* Hyper modifier (Cmd + Option + Ctrl + Shift) */
+        combo_hyper {
+            timeout-ms = <50>;
+            key-positions = <POS_LEFT_GUI POS_LEFT_ALT>;
+            bindings = <&sk LG(LA(LC(LSHFT)))>;
+            layers = <0 2>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             display-name = "Base";
             bindings = <
-&kp ESC    &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP       &kp C_NEXT     &bl BL_CYCLE  &kp F11    &kp LS(LC(LG(NUMBER_4)))  &kp LC(UP_ARROW)  &kp LG(SPACE)  &bt BT_CLR  &kp SCROLLLOCK  &kp PAUSE_BREAK  &kp K_POWER  &to 1
+&kp ESC    &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP       &kp C_NEXT     &bl BL_CYCLE  &kp F11    &kp LS(LC(LG(NUMBER_4)))  &kp LC(UP_ARROW)  &kp LG(SPACE)  &bt BT_CLR  &kp SCROLLLOCK  &kp PAUSE_BREAK  &kp K_POWER  &none
 &kp GRAVE  &kp N1        &kp N2        &kp N3        &kp N4      &kp N5         &kp N6         &kp N7        &kp N8     &kp N9                    &kp N0            &kp MINUS      &kp EQUAL   &kp BSPC        &kp DEL
 &kp TAB    &kp Q         &kp W         &kp E         &kp R       &kp T          &kp Y          &kp U         &kp I      &kp O                     &kp P             &kp LBKT       &kp RBKT    &kp BSLH        &none
 &kp CLCK   &kp A         &kp S         &kp D         &kp F       &kp G          &kp H          &kp J         &kp K      &kp L                     &kp SEMI          &kp SQT        &kp RET     &kp PG_UP
 &kp LSHFT  &kp Z         &kp X         &kp C         &kp V       &kp B          &kp N          &kp M         &kp COMMA  &kp DOT                   &kp FSLH          &kp RSHFT      &kp UP      &kp PG_DN
-&kp LCTRL  &kp LEFT_ALT  &kp LEFT_GUI  &kp SPACE     &kp SPACE   &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RCTRL     &kp LEFT   &kp DOWN                  &kp RIGHT
+&kp LCTRL  &kp LGUI      &kp LEFT_GUI  &left_space LGUI BSPC  &right_space RALT SPACE   &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RCTRL     &kp LEFT   &kp DOWN                  &kp RIGHT
             >;
         };
 
         raise {
             display-name = "Fn";
             bindings = <
-&kp ESCAPE      &kp F1  &kp F2  &kp F3     &kp F4      &kp F5  &kp F6      &kp F7     &kp F8       &kp F9         &kp F10          &kp F11          &kp F12    &kp HOME       &kp END     &none  &to 0
-&none           &none   &none   &none      &none       &none   &none       &none      &kp KP_NLCK  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS        &kp EQUAL  &kp BACKSPACE
+&kp ESCAPE      &kp F1  &kp F2  &kp F3     &kp F4      &kp F5  &kp F6      &kp F7     &kp F8       &kp F9         &kp F10          &kp F11          &kp F12    &kp HOME       &kp END     &none  &none
+&none           &kp N1   &kp N2   &kp N3      &none       &none   &none       &none      &kp KP_NLCK  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS        &kp EQUAL  &kp BACKSPACE
 &kp TAB         &none   &none   &none      &none       &none   &none       &kp KP_N7  &kp KP_N8    &kp KP_N9      &kp KP_MINUS     &none            &none      &none          &kp DELETE
 &studio_unlock  &none   &none   &none      &none       &none   &none       &kp KP_N4  &kp KP_N5    &kp KP_N6      &kp KP_PLUS      &none            &kp ENTER  &kp PAGE_UP
 &kp LEFT_SHIFT  &none   &none   &none      &macro_ver  &none   &none       &kp KP_N1  &kp KP_N2    &kp KP_N3      &kp KP_ENTER     &kp RIGHT_SHIFT  &kp UP     &kp PAGE_DOWN
@@ -260,72 +606,44 @@
             >;
         };
 
-        cursor_layer {
-            display-name = "Cursor";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp PG_UP  &kp UP     &kp PG_DN &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp LEFT   &kp DOWN   &kp RIGHT &kp END    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans
-            >;
-        };
-
-        typing_layer {
-            display-name = "Typing";
-            bindings = <
-&trans     &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans   &trans     &trans     &trans     &trans     &trans     &trans     &trans  &trans
-&kp EQUAL  &kp N1   &kp N2   &kp N3   &kp N4   &kp N5   &kp N6   &kp N7   &kp N8   &kp N9     &kp N0     &kp MINUS  &kp EQUAL  &kp BSPC   &trans
-&trans     &kp Q    &kp W    &kp E    &kp R    &kp T    &kp Y    &kp U    &kp I    &kp O      &kp P      &kp LBKT   &kp RBKT   &kp BSLH   &trans
-&kp CAPS   &kp A    &kp S    &kp D    &kp F    &kp G    &kp H    &kp J    &kp K    &kp L      &kp SEMI   &kp SQT    &kp RET    &trans
-&typing_shift LGUI BSPC  &kp Z    &kp X    &kp C    &kp V    &kp B    &kp N    &kp M    &kp COMMA  &kp DOT    &kp FSLH   &trans     &trans     &trans
-&kp LCTRL  &kp LALT &kp LALT &kp SPACE &kp SPACE &kp SPACE &kp RALT &kp RCTRL &trans   &trans     &trans
-            >;
-        };
-
         extra1 {
-            display-name = "Blue";
-            status = "reserved";
+            display-name = "HRM macOS";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp ESC    &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP       &kp C_NEXT     &bl BL_CYCLE  &kp F11    &kp LS(LC(LG(NUMBER_4)))  &kp LC(UP_ARROW)  &kp LG(SPACE)  &bt BT_CLR  &kp SCROLLLOCK  &kp PAUSE_BREAK  &kp K_POWER  &none
+&kp GRAVE  &kp N1        &kp N2        &kp N3        &kp N4      &kp N5         &kp N6         &kp N7        &kp N8     &kp N9                    &kp N0            &kp MINUS      &kp EQUAL   &kp BSPC        &kp DEL
+&kp TAB    &kp Q         &kp W         &kp E         &kp R       &kp T          &kp Y          &kp U         &kp I      &kp O                     &kp P             &kp LBKT       &kp RBKT    &kp BSLH        &none
+&caps_esc  &HRM_left_pinky_v1_TKZ LSHFT A  &HRM_left_ring_v1_TKZ LCTRL S  &HRM_left_middy_v1_TKZ LALT D  &HRM_left_index_v1_TKZ LGUI F  &kp G      &kp H     &HRM_right_index_v1_TKZ LGUI J  &HRM_right_middy_v1_TKZ RALT K  &HRM_right_ring_v1_TKZ RCTRL L  &HRM_right_pinky_v1_TKZ RSHFT SEMI  &kp SQT        &kp RET     &kp PG_UP
+&kp LSHFT  &kp Z         &kp X         &kp C         &kp V       &kp B          &kp N          &kp M         &kp COMMA  &kp DOT                   &kp FSLH          &kp RSHFT      &kp UP      &kp PG_DN
+&kp LCTRL  &kp LCTRL     &kp LALT      &left_space LGUI BSPC  &right_space 4 SPACE   &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RCTRL     &kp LEFT   &kp DOWN                  &kp RIGHT
             >;
         };
 
         extra2 {
-            display-name = "Green";
-            status = "reserved";
+            display-name = "Cursor macOS";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans  &none
+&trans  &kp N1  &kp N2  &kp N3  &trans  &trans  &trans  &trans     &trans     &trans     &kp N0    &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp PG_UP  &kp UP     &kp PG_DN &trans     &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp LEFT   &kp DOWN   &kp RIGHT &kp END    &trans  &trans
+&trans  &trans  &cur_SELECT_LINE_macos_v1_TKZ  &cur_SELECT_WORD_macos_v1_TKZ  &cur_EXTEND_LINE_macos_v1_TKZ  &cur_EXTEND_WORD_macos_v1_TKZ  &trans     &trans     &trans     &trans    &trans     &trans  &trans
+&trans  &trans  &trans  &cur_SELECT_NONE_v1_TKZ  &trans  &trans  &trans  &trans     &trans     &trans     &trans
             >;
         };
 
         extra3 {
-            display-name = "Red";
-            status = "reserved";
+            display-name = "Mouse";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans     &trans  &trans     &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans  &trans  &none
+&trans  &kp N1     &kp N2  &kp N3     &trans  &trans  &trans     &mo 5      &mo 6      &mo 7     &kp N0     &trans  &trans  &trans  &trans
+&trans  &trans  &kp PG_DN  &trans  &kp PG_UP  &trans  &msc SCRL_DOWN  &mkp LCLK  &mmv MOVE_UP  &mkp RCLK  &sk RGUI  &trans  &trans  &trans  &trans
+&trans  &trans     &mo 5   &mo 6      &mo 7   &trans  &msc SCRL_UP  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &mkp MCLK  &mkp MB4  &trans  &trans
+&trans  &trans    &trans  &trans     &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_RIGHT  &trans  &mkp RCLK  &mkp MB5  &trans  &trans
+&trans  &trans     &trans  &mkp LCLK     &mkp RCLK  &trans  &trans  &trans     &trans     &trans    &mkp MCLK
             >;
         };
 
         extra4 {
-            display-name = "Purple";
-            status = "reserved";
+            display-name = "MouseSlow";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
@@ -337,8 +655,7 @@
         };
 
         extra5 {
-            display-name = "Cyan";
-            status = "reserved";
+            display-name = "MouseFast";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
@@ -350,8 +667,7 @@
         };
 
         extra6 {
-            display-name = "Yellow"; 
-            status = "reserved";
+            display-name = "MouseWarp";
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
@@ -359,30 +675,6 @@
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        mouse_layer {
-            display-name = "Mouse";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        symbol_layer {
-            display-name = "Symbol";
-            bindings = <
-&trans     &trans    &trans     &trans     &trans     &trans     &trans     &trans     &trans      &trans     &trans     &trans     &trans     &trans     &trans  &trans  &trans
-&kp GRAVE  &kp RBKT  &kp LPAR   &kp RPAR   &kp SEMI   &kp DOT    &trans     &trans     &trans      &trans     &trans     &trans     &trans     &trans     &trans
-&kp LBKT   &kp EXCL  &kp LBRC   &kp RBRC   &kp COMMA  &kp QMARK  &kp GRAVE  &sk RSHFT  &sk RCTRL   &sk RALT   &sk RGUI   &trans     &trans     &trans     &trans
-&kp HASH   &kp CARET &kp EQUAL  &kp UNDER  &kp DLLR   &kp STAR   &kp DQT    &kp BSPC   &kp TAB     &kp SPACE  &kp RET    &trans     &trans     &trans
-&kp TILDE  &kp LT    &kp PIPE   &kp MINUS  &kp GT     &kp FSLH   &kp SQT    &kp DEL    &kp LS(TAB) &kp INS    &kp ESC    &trans     &trans     &trans
-&trans     &kp AMPS  &kp SQT    &kp DQT    &kp PLUS   &kp PRCNT  &kp COLON  &kp AT     &trans      &trans     &trans
             >;
         };
     };
