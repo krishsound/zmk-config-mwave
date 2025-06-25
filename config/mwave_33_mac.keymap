@@ -14,7 +14,6 @@
 #include <behaviors/advertising_mode.dtsi>
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
-#include "version.dtsi"
 
 /* Gold Copy Key Position Definitions - Based on your keyboard layout */
 /* Top Row (Function/Media Keys) - 17 positions */
@@ -547,7 +546,7 @@
 &trans  &kp N1  &kp N2  &kp N3  &trans  &trans  &trans  &trans     &trans     &trans     &kp N0    &trans     &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp PG_UP  &kp UP     &kp PG_DN &trans     &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp LEFT   &kp DOWN   &kp RIGHT &kp END    &trans  &trans
-&trans  &trans  &cur_SELECT_LINE_macos_v1_TKZ  &cur_SELECT_WORD_macos_v1_TKZ  &cur_EXTEND_LINE_macos_v1_TKZ  &cur_EXTEND_WORD_macos_v1_TKZ  &trans     &trans     &trans     &trans    &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans
 &trans  &trans  &trans  &cur_SELECT_NONE_v1_TKZ  &trans  &trans  &trans  &trans     &trans     &trans     &trans
             >;
         };
