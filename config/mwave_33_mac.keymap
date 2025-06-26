@@ -232,15 +232,6 @@ behaviors {
             flavor = "tap-preferred";
             bindings = <&kp>, <&mkp>;
         };
-
-        /* Right Option modifier behavior - makes RALT feel "held" */
-        ralt_mod: ralt_mod {
-            compatible = "zmk,behavior-mod-morph";
-            label = "RALT_MOD";
-            #binding-cells = <1>;
-            bindings = <&kp>, <&kp>;
-            mods = <(MOD_RALT)>;
-        };
     };
 
     keymap {
