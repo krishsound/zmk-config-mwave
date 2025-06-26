@@ -67,52 +67,52 @@
 #define POS_LBKT 43
 #define POS_RBKT 44
 #define POS_BSLH 45
-#define POS_NONE1 46
+#define POS_DEL 46
 
 /* Home Row - 14 positions */
-#define POS_CAPS 47
-#define POS_A 48
-#define POS_S 49
-#define POS_D 50
-#define POS_F 51
-#define POS_G 52
-#define POS_H 53
-#define POS_J 54
-#define POS_K 55
-#define POS_L 56
-#define POS_SEMI 57
-#define POS_SQT 58
-#define POS_RET 59
-#define POS_PGUP 60
+#define POS_CAPS 48
+#define POS_A 49
+#define POS_S 50
+#define POS_D 51
+#define POS_F 52
+#define POS_G 53
+#define POS_H 54
+#define POS_J 55
+#define POS_K 56
+#define POS_L 57
+#define POS_SEMI 58
+#define POS_SQT 59
+#define POS_RET 60
+#define POS_PGUP 61
 
 /* Bottom Alpha Row - 14 positions */
-#define POS_LSHFT 61
-#define POS_Z 62
-#define POS_X 63
-#define POS_C 64
-#define POS_V 65
-#define POS_B 66
-#define POS_N 67
-#define POS_M 68
-#define POS_COMMA 69
-#define POS_DOT 70
-#define POS_FSLH 71
-#define POS_RSHFT 72
-#define POS_UP 73
-#define POS_PGDN 74
+#define POS_LSHFT 62
+#define POS_Z 63
+#define POS_X 64
+#define POS_C 65
+#define POS_V 66
+#define POS_B 67
+#define POS_N 68
+#define POS_M 69
+#define POS_COMMA 70
+#define POS_DOT 71
+#define POS_FSLH 72
+#define POS_RSHFT 73
+#define POS_UP 74
+#define POS_PGDN 75
 
 /* Bottom Row - 11 positions */
-#define POS_LCTRL 75
-#define POS_LEFT_ALT 76
-#define POS_LEFT_GUI 77
-#define POS_SPACE1 78
-#define POS_SPACE2 79
-#define POS_RIGHT_GUI 80
-#define POS_RIGHT_ALT 81
-#define POS_RCTRL 82
-#define POS_LEFT 83
-#define POS_DOWN 84
-#define POS_RIGHT 85
+#define POS_LCTRL 76
+#define POS_LEFT_ALT 77
+#define POS_LEFT_GUI 78
+#define POS_SPACE1 79
+#define POS_SPACE2 80
+#define POS_RIGHT_GUI 81
+#define POS_RIGHT_ALT 82
+#define POS_RCTRL 83
+#define POS_LEFT 84
+#define POS_DOWN 85
+#define POS_RIGHT 86
 
 / {
     #include "mwave_prim.dtsi"
@@ -136,37 +136,69 @@
             mods = <(MOD_LGUI)>;
         };
 
-        /* Fn + Number layer access behaviors */
-        fn_num_0: fn_num_0 {
+        /* Right Ctrl + Number layer access behaviors */
+        rctrl_num_0: rctrl_num_0 {
             compatible = "zmk,behavior-mod-morph";
-            label = "FN_NUM_0";
+            label = "RCTRL_NUM_0";
             #binding-cells = <0>;
             bindings = <&kp N0>, <&to 0>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_RCTL)>;
         };
 
-        fn_num_1: fn_num_1 {
+        rctrl_num_1: rctrl_num_1 {
             compatible = "zmk,behavior-mod-morph";
-            label = "FN_NUM_1";
+            label = "RCTRL_NUM_1";
             #binding-cells = <0>;
             bindings = <&kp N1>, <&to 1>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_RCTL)>;
         };
 
-        fn_num_2: fn_num_2 {
+        rctrl_num_2: rctrl_num_2 {
             compatible = "zmk,behavior-mod-morph";
-            label = "FN_NUM_2";
+            label = "RCTRL_NUM_2";
             #binding-cells = <0>;
             bindings = <&kp N2>, <&to 2>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_RCTL)>;
         };
 
-        fn_num_3: fn_num_3 {
+        rctrl_num_3: rctrl_num_3 {
             compatible = "zmk,behavior-mod-morph";
-            label = "FN_NUM_3";
+            label = "RCTRL_NUM_3";
             #binding-cells = <0>;
             bindings = <&kp N3>, <&to 3>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_RCTL)>;
+        };
+
+        rctrl_num_4: rctrl_num_4 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RCTRL_NUM_4";
+            #binding-cells = <0>;
+            bindings = <&kp N4>, <&to 4>;
+            mods = <(MOD_RCTL)>;
+        };
+
+        rctrl_num_5: rctrl_num_5 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RCTRL_NUM_5";
+            #binding-cells = <0>;
+            bindings = <&kp N5>, <&to 5>;
+            mods = <(MOD_RCTL)>;
+        };
+
+        rctrl_num_6: rctrl_num_6 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RCTRL_NUM_6";
+            #binding-cells = <0>;
+            bindings = <&kp N6>, <&to 6>;
+            mods = <(MOD_RCTL)>;
+        };
+
+        rctrl_num_7: rctrl_num_7 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RCTRL_NUM_7";
+            #binding-cells = <0>;
+            bindings = <&kp N7>, <&to 7>;
+            mods = <(MOD_RCTL)>;
         };
 
         /* Home Row Mods - Silver copy style with optimized per-finger timing */
@@ -465,71 +497,14 @@
         };
     };
 
-    /* Combos - adapted from silver copy */
+    /* Combos - removed problematic Fn combos */
     combos {
         compatible = "zmk,combos";
-        
-        /* Layer Navigation Combos - Fn + Number */
-        combo_layer_0 {
-            timeout-ms = <50>;
-            key-positions = <POS_LAYER_SWITCH POS_0>;
-            bindings = <&to 0>;
-            layers = <0 1 2 3>;
-        };
-
-        combo_layer_1 {
-            timeout-ms = <50>;
-            key-positions = <POS_LAYER_SWITCH POS_1>;
-            bindings = <&to 1>;
-            layers = <0 1 2 3>;
-        };
-
-        combo_layer_2 {
-            timeout-ms = <50>;
-            key-positions = <POS_LAYER_SWITCH POS_2>;
-            bindings = <&to 2>;
-            layers = <0 1 2 3>;
-        };
-
-        combo_layer_3 {
-            timeout-ms = <50>;
-            key-positions = <POS_LAYER_SWITCH POS_3>;
-            bindings = <&to 3>;
-            layers = <0 1 2 3 4 5 6 7>;
-        };
-
-        combo_layer_4 {
-            timeout-ms = <50>;
-            key-positions = <POS_LAYER_SWITCH POS_4>;
-            bindings = <&to 4>;
-            layers = <0 1 2 3 4 5 6 7>;
-        };
-
-        combo_layer_5 {
-            timeout-ms = <50>;
-            key-positions = <POS_LAYER_SWITCH POS_5>;
-            bindings = <&to 5>;
-            layers = <0 1 2 3 4 5 6 7>;
-        };
-
-        combo_layer_6 {
-            timeout-ms = <50>;
-            key-positions = <POS_LAYER_SWITCH POS_6>;
-            bindings = <&to 6>;
-            layers = <0 1 2 3 4 5 6 7>;
-        };
-
-        combo_layer_7 {
-            timeout-ms = <50>;
-            key-positions = <POS_LAYER_SWITCH POS_7>;
-            bindings = <&to 7>;
-            layers = <0 1 2 3 4 5 6 7>;
-        };
         
         /* Caps lock when pressing both shift keys */
         combo_caps {
             timeout-ms = <50>;
-            key-positions = <POS_LSHFT POS_RSHFT>;
+            key-positions = <POS_LSHFT POS_RSHFT>;  // Updated positions
             bindings = <&kp CAPS>;
             layers = <0 2>;
         };
@@ -537,7 +512,7 @@
         /* Meh modifier (Option + Ctrl + Shift) */
         combo_meh {
             timeout-ms = <50>;
-            key-positions = <POS_LEFT_ALT POS_LCTRL>;
+            key-positions = <POS_LEFT_ALT POS_LCTRL>;  // Updated positions
             bindings = <&sk LA(LC(LSHFT))>;
             layers = <0 2>;
         };
@@ -545,7 +520,7 @@
         /* Hyper modifier (Cmd + Option + Ctrl + Shift) */
         combo_hyper {
             timeout-ms = <50>;
-            key-positions = <POS_LEFT_GUI POS_LEFT_ALT>;
+            key-positions = <POS_LEFT_GUI POS_LEFT_ALT>;  // Updated positions
             bindings = <&sk LG(LA(LC(LSHFT)))>;
             layers = <0 2>;
         };
@@ -581,8 +556,8 @@
         extra1 {
             display-name = "HRM macOS";
             bindings = <
-&kp ESC    &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP       &kp C_NEXT     &bl BL_CYCLE  &kp F11    &kp LS(LC(LG(NUMBER_4)))  &kp LC(UP_ARROW)  &kp LG(SPACE)  &bt BT_CLR  &kp SCROLLLOCK  &kp PAUSE_BREAK  &kp K_POWER  &none
-&kp GRAVE  &kp N1        &kp N2        &kp N3        &kp N4      &kp N5         &kp N6         &kp N7        &kp N8     &kp N9                    &kp N0            &kp MINUS      &kp EQUAL   &kp BSPC        &kp DEL
+&kp ESC    &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP       &kp C_NEXT     &bl BL_CYCLE  &kp F11    &kp LS(LC(LG(NUMBER_4)))  &kp LC(UP_ARROW)  &kp LG(SPACE)  &bt BT_CLR  &kp SCROLLLOCK  &kp PAUSE_BREAK  &kp K_POWER  &to 1
+&kp GRAVE  &rctrl_num_1  &rctrl_num_2  &rctrl_num_3  &rctrl_num_4  &rctrl_num_5  &rctrl_num_6  &rctrl_num_7  &kp N8     &kp N9                    &rctrl_num_0      &kp MINUS      &kp EQUAL   &kp BSPC        &kp DEL
 &kp TAB    &kp Q         &kp W         &kp E         &kp R       &kp T          &kp Y          &kp U         &kp I      &kp O                     &kp P             &kp LBKT       &kp RBKT    &kp BSLH        &none
 &caps_esc  &HRM_left_pinky_v1_TKZ LSHFT A  &HRM_left_ring_v1_TKZ LCTRL S  &HRM_left_middy_v1_TKZ LALT D  &HRM_left_index_v1_TKZ LGUI F  &kp G      &kp H     &HRM_right_index_v1_TKZ LGUI J  &HRM_right_middy_v1_TKZ RALT K  &HRM_right_ring_v1_TKZ RCTRL L  &HRM_right_pinky_v1_TKZ RSHFT SEMI  &kp SQT        &kp RET     &kp PG_UP
 &kp LSHFT  &kp Z         &kp X         &kp C         &kp V       &kp B          &kp N          &kp M         &kp COMMA  &kp DOT                   &kp FSLH          &kp RSHFT      &kp UP      &kp PG_DN
@@ -593,24 +568,24 @@
         extra2 {
             display-name = "Cursor macOS";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans  &none
-&trans  &kp N1  &kp N2  &kp N3  &trans  &trans  &trans  &trans     &trans     &trans     &kp N0    &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans     &kp PG_UP  &kp UP     &kp PG_DN &trans     &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp HOME   &kp LEFT   &kp DOWN   &kp RIGHT &kp END    &trans  &trans
-&trans  &trans  &cur_SELECT_LINE_macos_v1_TKZ  &cur_SELECT_WORD_macos_v1_TKZ  &cur_EXTEND_LINE_macos_v1_TKZ  &cur_EXTEND_WORD_macos_v1_TKZ  &trans     &trans     &trans     &trans    &trans     &trans  &trans
-&trans  &trans  &trans  &cur_SELECT_NONE_v1_TKZ  &trans  &trans  &trans  &trans     &trans     &trans     &trans
+&trans  &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans                    &trans            &trans         &trans      &trans          &trans
+&trans  &rctrl_num_1  &rctrl_num_2  &rctrl_num_3  &trans        &trans        &trans        &trans        &trans     &trans                    &rctrl_num_0      &trans         &trans      &trans          &trans
+&trans  &trans        &trans        &trans        &trans        &trans        &trans        &trans        &kp PG_UP  &kp UP                    &kp PG_DN         &trans         &trans      &trans          &trans
+&trans  &trans        &trans        &trans        &trans        &trans        &kp HOME      &kp LEFT      &kp DOWN   &kp RIGHT                 &kp END           &trans         &trans      &trans
+&trans  &trans        &cur_SELECT_LINE_macos_v1_TKZ  &cur_SELECT_WORD_macos_v1_TKZ  &cur_EXTEND_LINE_macos_v1_TKZ  &cur_EXTEND_WORD_macos_v1_TKZ  &trans        &trans        &trans     &trans                    &trans            &trans         &trans      &trans
+&trans  &trans        &trans        &cur_SELECT_NONE_v1_TKZ  &trans        &trans        &trans        &trans        &trans     &trans                    &trans
             >;
         };
 
         extra3 {
             display-name = "Mouse";
             bindings = <
-&trans  &trans     &trans  &trans     &trans  &trans  &trans     &trans     &trans     &trans    &trans     &trans  &trans  &trans  &trans  &trans  &none
-&trans  &kp N1     &kp N2  &kp N3     &trans  &trans  &trans     &mo 5      &mo 6      &mo 7     &kp N0     &trans  &trans  &trans  &trans
-&trans  &trans  &kp PG_DN  &trans  &kp PG_UP  &trans  &none  &none  &none  &none  &sk RGUI  &trans  &trans  &trans  &trans
-&trans  &trans     &mo 5   &mo 6      &mo 7   &trans  &none  &none  &none  &none  &none  &none  &trans  &trans
-&trans  &trans    &trans  &trans     &trans  &trans  &trans  &none  &none  &trans  &none  &none  &trans  &trans
-&trans  &trans     &trans  &none     &none  &trans  &trans  &trans     &trans     &trans    &none
+&trans  &trans        &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans                    &trans            &trans         &trans      &trans          &trans      &trans  &to 1
+&trans  &rctrl_num_1  &rctrl_num_2  &rctrl_num_3  &trans        &trans        &trans        &mo 5         &mo 6      &mo 7                     &rctrl_num_0      &trans         &trans      &trans          &trans
+&trans  &trans        &kp PG_DN     &trans        &kp PG_UP     &trans        &none         &none         &none      &none                     &sk RGUI          &trans         &trans      &trans          &trans
+&trans  &trans        &mo 5         &mo 6         &mo 7         &trans        &none         &none         &none      &none                     &none             &none          &trans      &trans
+&trans  &trans        &trans        &trans        &trans        &trans        &trans        &none         &none      &trans                    &none             &none          &trans      &trans
+&trans  &trans        &trans        &none         &none         &trans        &trans        &trans        &trans     &trans                    &none
             >;
         };
 
