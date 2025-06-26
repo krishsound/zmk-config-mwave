@@ -21,13 +21,15 @@ behaviors {
             bindings = <&mo 1>, <&sl 1>;
         };
 
-        /* Caps Lock behavior - tap for ESC, Cmd+tap for window switch */
+/* Caps Lock behavior - tap for ESC, hold for right option */
         caps_esc: caps_esc {
-            compatible = "zmk,behavior-mod-morph";
+            compatible = "zmk,behavior-hold-tap";
             label = "CAPS_ESC";
-            #binding-cells = <0>;
-            bindings = <&kp RALT>, <&kp ESC>;
-            
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
 
         /* Right Ctrl + Number layer access behaviors */
