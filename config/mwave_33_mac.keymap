@@ -26,8 +26,8 @@ behaviors {
             compatible = "zmk,behavior-mod-morph";
             label = "CAPS_ESC";
             #binding-cells = <0>;
-            bindings = <&kp ESC>, <&kp GRAVE>;
-            mods = <(MOD_LGUI)>;
+            bindings = <&kp RALT>, <&kp ESC>;
+            
         };
 
         /* Right Ctrl + Number layer access behaviors */
@@ -205,7 +205,7 @@ behaviors {
             quick-tap-ms = <150>;
             require-prior-idle-ms = <70>;
             flavor = "balanced";
-            bindings = <&mo>, <&kp>;
+            bindings = <&kp>, <&kp>;
         };
     };
 
