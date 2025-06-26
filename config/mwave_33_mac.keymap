@@ -15,105 +15,6 @@
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
 
-/* Gold Copy Key Position Definitions - Based on your keyboard layout */
-/* Top Row (Function/Media Keys) - 17 positions */
-#define POS_F1 0
-#define POS_MUTE 1
-#define POS_VOL_DN 2
-#define POS_VOL_UP 3
-#define POS_PREV 4
-#define POS_PLAY 5
-#define POS_NEXT 6
-#define POS_BL 7
-#define POS_F11 8
-#define POS_SCRN 9
-#define POS_UP_ARR 10
-#define POS_SPACE_KEY 11
-#define POS_BT_CLR 12
-#define POS_SCROLL 13
-#define POS_PAUSE 14
-#define POS_POWER 15
-#define POS_LAYER_SWITCH 16
-
-/* Number Row - 15 positions */
-#define POS_GRAVE 17
-#define POS_1 18
-#define POS_2 19
-#define POS_3 20
-#define POS_4 21
-#define POS_5 22
-#define POS_6 23
-#define POS_7 24
-#define POS_8 25
-#define POS_9 26
-#define POS_0 27
-#define POS_MINUS 28
-#define POS_EQUAL 29
-#define POS_BSPC 30
-#define POS_NONE_31 31
-
-/* Top Alpha Row - 15 positions */
-#define POS_TAB 30
-#define POS_Q 31
-#define POS_W 32
-#define POS_E 33
-#define POS_R 34
-#define POS_T 35
-#define POS_Y 36
-#define POS_U 37
-#define POS_I 38
-#define POS_O 39
-#define POS_P 40
-#define POS_LBKT 41
-#define POS_RBKT 42
-#define POS_BSLH 43
-#define POS_DEL 44
-
-/* Home Row - 14 positions */
-#define POS_CAPS 45
-#define POS_A 46
-#define POS_S 47
-#define POS_D 48
-#define POS_F 49
-#define POS_G 50
-#define POS_H 51
-#define POS_J 52
-#define POS_K 53
-#define POS_L 54
-#define POS_SEMI 55
-#define POS_SQT 56
-#define POS_RET 57
-#define POS_PGUP 58
-
-/* Bottom Alpha Row - 14 positions */
-#define POS_LSHFT 59
-#define POS_Z 60
-#define POS_X 61
-#define POS_C 62
-#define POS_V 63
-#define POS_B 64
-#define POS_N 65
-#define POS_M 66
-#define POS_COMMA 67
-#define POS_DOT 68
-#define POS_FSLH 69
-#define POS_RSHFT 70
-#define POS_UP 71
-#define POS_PGDN 72
-
-/* Bottom Row - 11 positions */
-#define POS_LCTRL 73
-#define POS_LEFT_ALT 74
-#define POS_LEFT_GUI 75
-#define POS_SPACE1 76
-#define POS_SPACE2 77
-#define POS_RIGHT_GUI 78
-#define POS_RIGHT_ALT 79
-#define POS_RCTRL 80
-#define POS_LEFT 81
-#define POS_DOWN 82
-#define POS_RIGHT 83
-
 / {
     #include "mwave_prim.dtsi"
     
@@ -201,7 +102,7 @@
             mods = <(MOD_RCTL)>;
         };
 
-        /* Home Row Mods - Silver copy style with optimized per-finger timing */
+        /* Simplified Home Row Mods - NO hold-trigger-key-positions */
         HRM_left_pinky_v1_TKZ: HRM_left_pinky_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_LEFT_PINKY";
@@ -211,12 +112,6 @@
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <POS_6 POS_7 POS_8 POS_9 POS_0 POS_MINUS POS_EQUAL POS_BSPC POS_DEL 
-                                         POS_Y POS_U POS_I POS_O POS_P POS_LBKT POS_RBKT POS_BSLH 
-                                         POS_H POS_J POS_K POS_L POS_SEMI POS_SQT POS_RET POS_PGUP
-                                         POS_N POS_M POS_COMMA POS_DOT POS_FSLH POS_RSHFT POS_UP POS_PGDN
-                                         POS_SPACE1 POS_SPACE2 POS_RIGHT_GUI POS_RIGHT_ALT POS_RCTRL POS_LEFT POS_DOWN POS_RIGHT>;
-            hold-trigger-on-release;
         };
 
         HRM_left_ring_v1_TKZ: HRM_left_ring_v1_TKZ {
@@ -228,12 +123,6 @@
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <POS_6 POS_7 POS_8 POS_9 POS_0 POS_MINUS POS_EQUAL POS_BSPC POS_DEL 
-                                         POS_Y POS_U POS_I POS_O POS_P POS_LBKT POS_RBKT POS_BSLH 
-                                         POS_H POS_J POS_K POS_L POS_SEMI POS_SQT POS_RET POS_PGUP
-                                         POS_N POS_M POS_COMMA POS_DOT POS_FSLH POS_RSHFT POS_UP POS_PGDN
-                                         POS_SPACE1 POS_SPACE2 POS_RIGHT_GUI POS_RIGHT_ALT POS_RCTRL POS_LEFT POS_DOWN POS_RIGHT>;
-            hold-trigger-on-release;
         };
 
         HRM_left_middy_v1_TKZ: HRM_left_middy_v1_TKZ {
@@ -245,12 +134,6 @@
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <POS_6 POS_7 POS_8 POS_9 POS_0 POS_MINUS POS_EQUAL POS_BSPC POS_DEL 
-                                         POS_Y POS_U POS_I POS_O POS_P POS_LBKT POS_RBKT POS_BSLH 
-                                         POS_H POS_J POS_K POS_L POS_SEMI POS_SQT POS_RET POS_PGUP
-                                         POS_N POS_M POS_COMMA POS_DOT POS_FSLH POS_RSHFT POS_UP POS_PGDN
-                                         POS_SPACE1 POS_SPACE2 POS_RIGHT_GUI POS_RIGHT_ALT POS_RCTRL POS_LEFT POS_DOWN POS_RIGHT>;
-            hold-trigger-on-release;
         };
 
         HRM_left_index_v1_TKZ: HRM_left_index_v1_TKZ {
@@ -262,12 +145,6 @@
             require-prior-idle-ms = <100>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <POS_6 POS_7 POS_8 POS_9 POS_0 POS_MINUS POS_EQUAL POS_BSPC POS_DEL 
-                                         POS_Y POS_U POS_I POS_O POS_P POS_LBKT POS_RBKT POS_BSLH 
-                                         POS_H POS_J POS_K POS_L POS_SEMI POS_SQT POS_RET POS_PGUP
-                                         POS_N POS_M POS_COMMA POS_DOT POS_FSLH POS_RSHFT POS_UP POS_PGDN
-                                         POS_SPACE1 POS_SPACE2 POS_RIGHT_GUI POS_RIGHT_ALT POS_RCTRL POS_LEFT POS_DOWN POS_RIGHT>;
-            hold-trigger-on-release;
         };
 
         HRM_right_index_v1_TKZ: HRM_right_index_v1_TKZ {
@@ -279,12 +156,6 @@
             require-prior-idle-ms = <100>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <POS_GRAVE POS_1 POS_2 POS_3 POS_4 POS_5 
-                                         POS_TAB POS_Q POS_W POS_E POS_R POS_T 
-                                         POS_CAPS POS_A POS_S POS_D POS_F POS_G
-                                         POS_LSHFT POS_Z POS_X POS_C POS_V POS_B
-                                         POS_LCTRL POS_LEFT_ALT POS_LEFT_GUI POS_SPACE1 POS_SPACE2>;
-            hold-trigger-on-release;
         };
 
         HRM_right_middy_v1_TKZ: HRM_right_middy_v1_TKZ {
@@ -296,12 +167,6 @@
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <POS_GRAVE POS_1 POS_2 POS_3 POS_4 POS_5 
-                                         POS_TAB POS_Q POS_W POS_E POS_R POS_T 
-                                         POS_CAPS POS_A POS_S POS_D POS_F POS_G
-                                         POS_LSHFT POS_Z POS_X POS_C POS_V POS_B
-                                         POS_LCTRL POS_LEFT_ALT POS_LEFT_GUI POS_SPACE1 POS_SPACE2>;
-            hold-trigger-on-release;
         };
 
         HRM_right_ring_v1_TKZ: HRM_right_ring_v1_TKZ {
@@ -313,12 +178,6 @@
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <POS_GRAVE POS_1 POS_2 POS_3 POS_4 POS_5 
-                                         POS_TAB POS_Q POS_W POS_E POS_R POS_T 
-                                         POS_CAPS POS_A POS_S POS_D POS_F POS_G
-                                         POS_LSHFT POS_Z POS_X POS_C POS_V POS_B
-                                         POS_LCTRL POS_LEFT_ALT POS_LEFT_GUI POS_SPACE1 POS_SPACE2>;
-            hold-trigger-on-release;
         };
 
         HRM_right_pinky_v1_TKZ: HRM_right_pinky_v1_TKZ {
@@ -330,12 +189,6 @@
             require-prior-idle-ms = <150>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <POS_GRAVE POS_1 POS_2 POS_3 POS_4 POS_5 
-                                         POS_TAB POS_Q POS_W POS_E POS_R POS_T 
-                                         POS_CAPS POS_A POS_S POS_D POS_F POS_G
-                                         POS_LSHFT POS_Z POS_X POS_C POS_V POS_B
-                                         POS_LCTRL POS_LEFT_ALT POS_LEFT_GUI POS_SPACE1 POS_SPACE2>;
-            hold-trigger-on-release;
         };
 
         /* Left space: hold for Cmd, tap for backspace */
@@ -497,31 +350,15 @@
         };
     };
 
-    /* Combos - removed problematic Fn combos */
+    /* Simplified combos without position references */
     combos {
         compatible = "zmk,combos";
         
         /* Caps lock when pressing both shift keys */
         combo_caps {
             timeout-ms = <50>;
-            key-positions = <POS_LSHFT POS_RSHFT>;  // Updated positions
+            key-positions = <61 72>;  // Raw positions for left and right shift
             bindings = <&kp CAPS>;
-            layers = <0 2>;
-        };
-
-        /* Meh modifier (Option + Ctrl + Shift) */
-        combo_meh {
-            timeout-ms = <50>;
-            key-positions = <POS_LEFT_ALT POS_LCTRL>;  // Updated positions
-            bindings = <&sk LA(LC(LSHFT))>;
-            layers = <0 2>;
-        };
-
-        /* Hyper modifier (Cmd + Option + Ctrl + Shift) */
-        combo_hyper {
-            timeout-ms = <50>;
-            key-positions = <POS_LEFT_GUI POS_LEFT_ALT>;  // Updated positions
-            bindings = <&sk LG(LA(LC(LSHFT)))>;
             layers = <0 2>;
         };
     };
