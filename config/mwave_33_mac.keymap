@@ -53,66 +53,66 @@
 #define POS_NONE_31 31
 
 /* Top Alpha Row - 15 positions */
-#define POS_TAB 31
-#define POS_Q 32
-#define POS_W 33
-#define POS_E 34
-#define POS_R 35
-#define POS_T 36
-#define POS_Y 37
-#define POS_U 38
-#define POS_I 39
-#define POS_O 40
-#define POS_P 41
-#define POS_LBKT 42
-#define POS_RBKT 43
-#define POS_BSLH 44
-#define POS_DEL 45
+#define POS_TAB 30
+#define POS_Q 31
+#define POS_W 32
+#define POS_E 33
+#define POS_R 34
+#define POS_T 35
+#define POS_Y 36
+#define POS_U 37
+#define POS_I 38
+#define POS_O 39
+#define POS_P 40
+#define POS_LBKT 41
+#define POS_RBKT 42
+#define POS_BSLH 43
+#define POS_DEL 44
 
 /* Home Row - 14 positions */
-#define POS_CAPS 47
-#define POS_A 48
-#define POS_S 49
-#define POS_D 50
-#define POS_F 51
-#define POS_G 52
-#define POS_H 53
-#define POS_J 54
-#define POS_K 55
-#define POS_L 56
-#define POS_SEMI 57
-#define POS_SQT 58
-#define POS_RET 59
-#define POS_PGUP 60
+#define POS_CAPS 45
+#define POS_A 46
+#define POS_S 47
+#define POS_D 48
+#define POS_F 49
+#define POS_G 50
+#define POS_H 51
+#define POS_J 52
+#define POS_K 53
+#define POS_L 54
+#define POS_SEMI 55
+#define POS_SQT 56
+#define POS_RET 57
+#define POS_PGUP 58
 
 /* Bottom Alpha Row - 14 positions */
-#define POS_LSHFT 61
-#define POS_Z 62
-#define POS_X 63
-#define POS_C 64
-#define POS_V 65
-#define POS_B 66
-#define POS_N 67
-#define POS_M 68
-#define POS_COMMA 69
-#define POS_DOT 70
-#define POS_FSLH 71
-#define POS_RSHFT 72
-#define POS_UP 73
-#define POS_PGDN 74
+#define POS_LSHFT 59
+#define POS_Z 60
+#define POS_X 61
+#define POS_C 62
+#define POS_V 63
+#define POS_B 64
+#define POS_N 65
+#define POS_M 66
+#define POS_COMMA 67
+#define POS_DOT 68
+#define POS_FSLH 69
+#define POS_RSHFT 70
+#define POS_UP 71
+#define POS_PGDN 72
 
 /* Bottom Row - 11 positions */
-#define POS_LCTRL 75
-#define POS_LEFT_ALT 76
-#define POS_LEFT_GUI 77
-#define POS_SPACE1 78
-#define POS_SPACE2 79
-#define POS_RIGHT_GUI 80
-#define POS_RIGHT_ALT 81
-#define POS_RCTRL 82
-#define POS_LEFT 83
-#define POS_DOWN 84
-#define POS_RIGHT 85
+#define POS_LCTRL 73
+#define POS_LEFT_ALT 74
+#define POS_LEFT_GUI 75
+#define POS_SPACE1 76
+#define POS_SPACE2 77
+#define POS_RIGHT_GUI 78
+#define POS_RIGHT_ALT 79
+#define POS_RCTRL 80
+#define POS_LEFT 81
+#define POS_DOWN 82
+#define POS_RIGHT 83
 
 / {
     #include "mwave_prim.dtsi"
