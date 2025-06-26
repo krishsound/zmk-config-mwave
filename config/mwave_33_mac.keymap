@@ -231,7 +231,7 @@ behaviors {
 &kp GRAVE  &kp N1        &kp N2        &kp N3        &kp N4      &kp N5         &kp N6         &kp N7        &kp N8     &kp N9                    &kp N0            &kp MINUS      &kp EQUAL   &kp BSPC
 &kp TAB    &kp Q         &kp W         &kp E         &kp R       &kp T          &kp Y          &kp U         &kp I      &kp O                     &kp P             &kp LBKT       &kp RBKT    &kp BSLH        &kp DEL
 //&caps_esc  &kp A         &kp S         &kp D         &kp F       &kp G          &kp H          &kp J         &kp K      &kp L                     &kp SEMI          &kp SQT        &kp RET     &kp PG_UP
-&caps_esc  &HRM_left_pinky_v1_TKZ LSHFT A  &HRM_left_ring_v1_TKZ LCTRL S  &HRM_left_middy_v1_TKZ LALT D  &HRM_left_index_v1_TKZ LGUI F  &kp G      &kp H     &HRM_right_index_v1_TKZ LGUI J  &HRM_right_middy_v1_TKZ RALT K  &HRM_right_ring_v1_TKZ RCTRL L  &HRM_right_pinky_v1_TKZ RSHFT SEMI &kp SQT  &kp RET &kp PG_UPj    
+&caps_esc  &HRM_left_pinky_v1_TKZ LSHFT A  &HRM_left_ring_v1_TKZ LCTRL S  &HRM_left_middy_v1_TKZ LALT D  &HRM_left_index_v1_TKZ LGUI F  &kp G      &kp H     &HRM_right_index_v1_TKZ LGUI J  &HRM_right_middy_v1_TKZ RALT K  &HRM_right_ring_v1_TKZ RCTRL L  &HRM_right_pinky_v1_TKZ RSHFT SEMI &kp SQT  &kp RET &kp PG_UP    
 &kp LSHFT  &kp Z         &kp X         &kp C         &kp V       &kp B          &kp N          &kp M         &kp COMMA  &kp DOT                   &kp FSLH          &kp RSHFT      &kp UP      &kp PG_DN
 &kp LCTRL  &kp LGUI      &kp LEFT_GUI  &left_space LGUI BSPC  &right_space RALT SPACE   &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RCTRL     &kp LEFT   &kp DOWN                  &kp RIGHT
             >;
