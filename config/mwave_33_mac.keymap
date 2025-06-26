@@ -12,7 +12,8 @@
 
 / {
     #include "mwave_prim.dtsi"
-behaviors {
+    
+    behaviors {
         /* For the "layer" key using right control */
         lower: lower {
             compatible = "zmk,behavior-tap-dance";
@@ -22,7 +23,7 @@ behaviors {
             bindings = <&mo 1>, <&sl 1>;
         };
 
-/* Caps Lock behavior - tap for ESC, hold for right option */
+        /* Caps Lock behavior - tap for ESC, hold for right option */
         caps_esc: caps_esc {
             compatible = "zmk,behavior-hold-tap";
             label = "CAPS_ESC";
@@ -98,7 +99,7 @@ behaviors {
             mods = <(MOD_RCTL)>;
         };
 
-        /* Simplified Home Row Mods - NO hold-trigger-key-positions */
+        /* Home Row Mods */
         HRM_left_pinky_v1_TKZ: HRM_left_pinky_v1_TKZ {
             compatible = "zmk,behavior-hold-tap";
             label = "HRM_LEFT_PINKY";
@@ -199,7 +200,7 @@ behaviors {
             bindings = <&kp>, <&kp>;
         };
 
-        /* Right space: hold for layer 4 with RALT active */
+        /* Right space: hold for RALT + layer 4 */
         right_space: right_space {
             compatible = "zmk,behavior-hold-tap";
             label = "RIGHT_SPACE";
@@ -208,17 +209,7 @@ behaviors {
             quick-tap-ms = <150>;
             require-prior-idle-ms = <70>;
             flavor = "balanced";
-            bindings = <&mo>, <&kp>;
-        };
-
-        /* Behavior that activates RALT when entering layer 4 */
-        ralt_layer_mod: ralt_layer_mod {
-            compatible = "zmk,behavior-hold-tap";
-            label = "RALT_LAYER_MOD";
-            #binding-cells = <2>;
-            tapping-term-ms = <0>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&mo>;
+            bindings = <&ralt_layer_activate>, <&kp>;
         };
 
         /* Left space for layer 4: tap for left click, hold for Cmd */
@@ -233,13 +224,12 @@ behaviors {
             bindings = <&kp>, <&mkp>;
         };
 
-        /* Right Option modifier behavior - makes RALT feel "held" */
-        ralt_mod: ralt_mod {
-            compatible = "zmk,behavior-mod-morph";
-            label = "RALT_MOD";
-            #binding-cells = <1>;
-            bindings = <&kp>, <&kp>;
-            mods = <(MOD_RALT)>;
+        /* Activates RALT modifier and layer 4 simultaneously */
+        ralt_layer_activate: ralt_layer_activate {
+            compatible = "zmk,behavior-macro";
+            label = "RALT_LAYER_ACTIVATE";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp RALT>, <&macro_press &mo 4>, <&macro_pause_for_release>, <&macro_release &mo 4>, <&macro_release &kp RALT>;
         };
     };
 
