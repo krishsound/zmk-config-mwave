@@ -10,6 +10,43 @@
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
 
+/* Input Listeners for Mouse Speed Control */
+&mmv_input_listener {
+    // Layer 3: MouseSlow
+    LAYER_MouseSlow {
+        layers = <3>;
+        input-processors = <&zip_xy_scaler 1 9>;
+    };
+    // Layer 4: MouseFast
+    LAYER_MouseFast {
+        layers = <4>;
+        input-processors = <&zip_xy_scaler 3 1>;
+    };
+    // Layer 5: MouseWarp
+    LAYER_MouseWarp {
+        layers = <5>;
+        input-processors = <&zip_xy_scaler 12 1>;
+    };
+};
+
+&msc_input_listener {
+    // Layer 3: MouseSlow
+    LAYER_MouseSlow {
+        layers = <3>;
+        input-processors = <&zip_scroll_scaler 1 9>;
+    };
+    // Layer 4: MouseFast
+    LAYER_MouseFast {
+        layers = <4>;
+        input-processors = <&zip_scroll_scaler 3 1>;
+    };
+    // Layer 5: MouseWarp
+    LAYER_MouseWarp {
+        layers = <5>;
+        input-processors = <&zip_scroll_scaler 12 1>;
+    };
+};
+
 / {
     #include "mwave_prim.dtsi"
 behaviors {
@@ -19,7 +56,7 @@ behaviors {
             label = "LAYER_TAP_DANCE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 3>, <&sl 3>;
+            bindings = <&mo 6>, <&sl 6>;
         };
 
 /* Caps Lock behavior - tap for ESC, hold for right option */
@@ -231,10 +268,10 @@ behaviors {
             hold-trigger-on-release;
         };
 
-        /* Left space for layer 2: tap for left click, hold for Cmd - with CORRECTED mWave positions */
-        left_space_layer2: left_space_layer2 {
+        /* Left space for mouse layer: tap for left click, hold for Cmd */
+        left_space_mouse: left_space_mouse {
             compatible = "zmk,behavior-hold-tap";
-            label = "LEFT_SPACE_LAYER2";
+            label = "LEFT_SPACE_MOUSE";
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             quick-tap-ms = <200>;
@@ -245,16 +282,16 @@ behaviors {
             hold-trigger-on-release;
         };
 
-        /* Right space behavior for layer 2: holds RALT modifier while in layer */
-        right_space_ralt: right_space_ralt {
+        /* Right space behavior for mouse layer: normal hold-tap */
+        right_space_mouse: right_space_mouse {
             compatible = "zmk,behavior-hold-tap";
-            label = "RIGHT_SPACE_RALT";
+            label = "RIGHT_SPACE_MOUSE";
             #binding-cells = <2>;
             tapping-term-ms = <250>;
             quick-tap-ms = <200>;
             require-prior-idle-ms = <100>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&kp>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
             hold-trigger-key-positions = <0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77>;
             hold-trigger-on-release;
         };
@@ -272,7 +309,7 @@ behaviors {
 &kp TAB    &kp Q         &kp W         &kp E         &kp R       &kp T          &kp Y          &kp U         &kp I      &kp O                     &kp P             &kp LBKT       &kp RBKT    &kp BSLH        &kp DEL
 &caps_esc RALT ESC  &HRM_left_pinky_v1_TKZ LSHFT A  &HRM_left_ring_v1_TKZ LCTRL S  &HRM_left_middy_v1_TKZ LALT D  &HRM_left_index_v1_TKZ LGUI F  &kp G      &kp H     &HRM_right_index_v1_TKZ LGUI J  &HRM_right_middy_v1_TKZ RALT K  &HRM_right_ring_v1_TKZ RCTRL L  &HRM_right_pinky_v1_TKZ RSHFT SEMI &kp SQT  &kp RET &kp PG_UP
 &kp LSHFT  &kp Z         &kp X         &kp C         &kp V       &kp B          &kp N          &kp M         &kp COMMA  &kp DOT                   &kp FSLH          &kp RSHFT      &kp UP      &kp PG_DN
-&kp LCTRL  &kp LGUI      &kp LEFT_GUI  &left_space LGUI BSPC  &right_space 2 SPACE   &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RCTRL     &kp LEFT   &kp DOWN                  &kp RIGHT
+                &kp LCTRL  &kp LGUI      &kp LEFT_GUI  &left_space LGUI BSPC  &right_space 2 SPACE   &kp RIGHT_GUI  &kp RIGHT_ALT  &kp RCTRL     &kp LEFT   &kp DOWN                  &kp RIGHT
             >;
         };
 
@@ -302,7 +339,7 @@ behaviors {
             >;
         };
 
-        // Layer 3: Function Layer
+        // Layer 6: Function Layer
         raise {
             display-name = "Fn";
             bindings = <
