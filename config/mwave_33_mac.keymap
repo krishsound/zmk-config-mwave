@@ -205,15 +205,7 @@
             compatible = "zmk,behavior-macro";
             label = "SHOW_LAYERS";
             #binding-cells = <0>;
-            bindings = <&kp L &kp A &kp Y &kp E &kp R &kp S &kp COLON &kp SPACE 
-                       &kp N0 &kp MINUS &kp H &kp R &kp M &kp COMMA &kp SPACE
-                       &kp N1 &kp MINUS &kp P &kp U &kp R &kp E &kp COMMA &kp SPACE
-                       &kp N2 &kp MINUS &kp M &kp O &kp U &kp S &kp E &kp COMMA &kp SPACE
-                       &kp N3 &kp MINUS &kp F &kp N &kp COMMA &kp SPACE
-                       &kp N4 &kp MINUS &kp M &kp S &kp L &kp O &kp W &kp COMMA &kp SPACE
-                       &kp N5 &kp MINUS &kp M &kp F &kp A &kp S &kp T &kp COMMA &kp SPACE
-                       &kp N6 &kp MINUS &kp M &kp W &kp A &kp R &kp P &kp COMMA &kp SPACE
-                       &kp N7 &kp MINUS &kp K &kp A &kp R &kp A &kp B &kp I &kp N &kp E &kp R>;
+            bindings = <&kp L &kp A &kp Y &kp E &kp R &kp S>;
         };
 
         /* Macro to display layer access methods */
@@ -221,12 +213,7 @@
             compatible = "zmk,behavior-macro";
             label = "SHOW_ACCESS";
             #binding-cells = <0>;
-            bindings = <&kp A &kp C &kp C &kp E &kp S &kp S &kp COLON &kp SPACE
-                       &kp R &kp C &kp T &kp R &kp L &kp PLUS &kp N0 &kp MINUS &kp N3 &kp COMMA &kp SPACE
-                       &kp H &kp O &kp L &kp D &kp SPACE &kp R &kp S &kp P &kp C &kp COMMA &kp SPACE
-                       &kp A &kp S &kp D &kp F &kp PLUS &kp K &kp COMMA &kp SPACE
-                       &kp T &kp O &kp P &kp SPACE &kp R &kp I &kp G &kp H &kp T &kp COMMA &kp SPACE
-                       &kp K &kp A &kp R &kp A &kp B &kp COLON &kp H &kp O &kp L &kp D &kp SPACE &kp R &kp S &kp P &kp C>;
+            bindings = <&kp A &kp C &kp C &kp E &kp S &kp S>;
         };
 
         /* Macro for version info */
@@ -393,8 +380,8 @@
 &kp ESCAPE      &kp F1  &kp F2  &kp F3     &kp F4      &kp F5  &kp F6      &kp F7     &kp F8       &kp F9         &kp F10          &kp F11          &kp F12    &kp HOME       &kp END     &none  &to 0
 &none           &rctrl_num_1   &rctrl_num_2   &rctrl_num_3      &none       &none   &none       &none      &kp KP_NLCK  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS        &kp EQUAL  &kp BACKSPACE
 &kp TAB         &none   &none   &none      &none       &none   &none       &kp KP_N7  &kp KP_N8    &kp KP_N9      &kp KP_MINUS     &none            &none      &ralt_bslh_info          &kp DELETE
-&studio_unlock  &none   &none   &none      &none       &none   &none       &kp KP_N4  &kp KP_N5    &kp KP_N6      &kp KP_PLUS      &none            &kp ENTER  &kp PAGE_UP
-&kp LEFT_SHIFT  &none   &none   &none      &macro_ver  &none   &none       &kp KP_N1  &kp KP_N2    &kp KP_N3      &kp KP_ENTER     &kp RIGHT_SHIFT  &kp UP     &kp PAGE_DOWN
+&none           &none   &none   &none      &none       &none   &none       &kp KP_N4  &kp KP_N5    &kp KP_N6      &kp KP_PLUS      &none            &kp ENTER  &kp PAGE_UP
+&kp LEFT_SHIFT  &none   &none   &none      &none       &none   &none       &kp KP_N1  &kp KP_N2    &kp KP_N3      &kp KP_ENTER     &kp RIGHT_SHIFT  &kp UP     &kp PAGE_DOWN
 &none           &none   &none   &kp SPACE  &kp KP_N0   &none   &kp KP_DOT  &none      &kp LEFT     &kp DOWN       &kp RIGHT
             >;
         };
