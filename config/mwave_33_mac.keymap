@@ -8,10 +8,9 @@
 #include <behaviors/advertising_mode.dtsi>
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
+#include "mwave_prim.dtsi"
 
 / {
-    #include "mwave_prim.dtsi"
-    
     behaviors {
         /* Caps Lock behavior - tap for ESC/Cmd+Grave, hold for right option */
         caps_esc: caps_esc {
