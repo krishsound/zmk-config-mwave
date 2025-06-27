@@ -24,12 +24,21 @@
             bindings = <&kp>, <&caps_morph>;
         };
 
-        /* Mod-morph for caps - ESC normally, Grave when Cmd is held */
+        /* Tap dance for caps - single tap ESC, double tap Cmd+H */
+        caps_td: caps_td {
+            compatible = "zmk,behavior-tap-dance";
+            label = "CAPS_TAP_DANCE";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp ESC>, <&kp LG(H)>;
+        };
+
+        /* Mod-morph for caps - tap dance normally, Grave when Cmd is held */
         caps_morph: caps_morph {
             compatible = "zmk,behavior-mod-morph";
             label = "CAPS_MORPH";
             #binding-cells = <0>;
-            bindings = <&kp ESC>, <&kp GRAVE>;
+            bindings = <&caps_td>, <&kp GRAVE>;
             mods = <(MOD_LGUI|MOD_RGUI)>;
             keep-mods = <(MOD_LGUI|MOD_RGUI)>;
         };
