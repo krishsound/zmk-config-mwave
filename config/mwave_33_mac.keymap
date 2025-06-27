@@ -29,7 +29,7 @@
             #binding-cells = <0>;
             tap-ms = <1>;
             wait-ms = <1>;
-            bindings = <&kp LA(GRAVE)>;
+            bindings = <&macro_press>, <&kp LALT>, <&macro_tap>, <&kp GRAVE>, <&macro_release>, <&kp LALT>;
         };
 
         /* Right Ctrl + Number layer access behaviors */
