@@ -10,43 +10,6 @@
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
 
-/* Input Listeners for Mouse Speed Control */
-&mmv_input_listener {
-    // Layer 3: MouseSlow
-    LAYER_MouseSlow {
-        layers = <3>;
-        input-processors = <&zip_xy_scaler 1 9>;
-    };
-    // Layer 4: MouseFast
-    LAYER_MouseFast {
-        layers = <4>;
-        input-processors = <&zip_xy_scaler 3 1>;
-    };
-    // Layer 5: MouseWarp
-    LAYER_MouseWarp {
-        layers = <5>;
-        input-processors = <&zip_xy_scaler 12 1>;
-    };
-};
-
-&msc_input_listener {
-    // Layer 3: MouseSlow
-    LAYER_MouseSlow {
-        layers = <3>;
-        input-processors = <&zip_scroll_scaler 1 9>;
-    };
-    // Layer 4: MouseFast
-    LAYER_MouseFast {
-        layers = <4>;
-        input-processors = <&zip_scroll_scaler 3 1>;
-    };
-    // Layer 5: MouseWarp
-    LAYER_MouseWarp {
-        layers = <5>;
-        input-processors = <&zip_scroll_scaler 12 1>;
-    };
-};
-
 / {
     #include "mwave_prim.dtsi"
 behaviors {
@@ -56,7 +19,7 @@ behaviors {
             label = "LAYER_TAP_DANCE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 6>, <&sl 6>;
+            bindings = <&mo 3>, <&sl 3>;
         };
 
 /* Caps Lock behavior - tap for ESC, hold for right option */
@@ -108,6 +71,22 @@ behaviors {
             label = "RCTRL_NUM_4";
             #binding-cells = <0>;
             bindings = <&kp N4>, <&to 4>;
+            mods = <(MOD_RCTL)>;
+        };
+
+        rctrl_num_5: rctrl_num_5 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RCTRL_NUM_5";
+            #binding-cells = <0>;
+            bindings = <&kp N5>, <&to 5>;
+            mods = <(MOD_RCTL)>;
+        };
+
+        rctrl_num_6: rctrl_num_6 {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RCTRL_NUM_6";
+            #binding-cells = <0>;
+            bindings = <&kp N6>, <&to 6>;
             mods = <(MOD_RCTL)>;
         };
 
@@ -352,24 +331,9 @@ behaviors {
             >;
         };
 
-        // Layer 4: Reserved
+        // Layer 7: Reserved
         extra1 {
             display-name = "Blue";
-            status = "reserved";
-        };
-
-        extra2 {
-            display-name = "Green";
-            status = "reserved";
-        };
-
-        extra3 {
-            display-name = "Red";
-            status = "reserved";
-        };
-
-        extra4 {
-            display-name = "Purple";
             status = "reserved";
         };
     };
