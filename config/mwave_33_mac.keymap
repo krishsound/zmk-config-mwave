@@ -9,9 +9,9 @@
 #include <behaviors/advertising_mode.dtsi>
 #include <behaviors/stp_indicators.dtsi>
 #include "studio-macros.dtsi"
-#include "mwave_prim.dtsi"
 
 / {
+    #include "mwave_prim.dtsi"
     /* Enhanced Mouse Input Listeners for Speed Control */
     &mmv_input_listener {
         // Mouse Slow Layer (Layer 3)
